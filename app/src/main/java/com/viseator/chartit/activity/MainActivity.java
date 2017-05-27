@@ -8,6 +8,7 @@ import android.widget.Toast;
 import com.viseator.chartit.BaseActivity;
 import com.viseator.chartit.R;
 
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity {

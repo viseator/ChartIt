@@ -1,6 +1,5 @@
 package com.viseator.chartit.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
@@ -10,10 +9,11 @@ import com.viseator.chartit.BaseActivity;
 import com.viseator.chartit.R;
 
 import butterknife.BindView;
-import butterknife.OnItemSelected;
+import butterknife.OnItemClick;
 
 public class ChartTypeActivity extends BaseActivity {
 
+    private static final String TAG = "@vir ChartTypeActivity";
     @BindView(R.id.chart_list)
     ListView listView;
     @Override
@@ -21,8 +21,8 @@ public class ChartTypeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
     }
 
-    @OnItemSelected(R.id.chart_list)
-    public void onListItemSelected(int position){
+    @OnItemClick(R.id.chart_list)
+    void onListItemClick(int position){
 
     }
     @Override
