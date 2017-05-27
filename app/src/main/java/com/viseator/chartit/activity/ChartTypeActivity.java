@@ -16,15 +16,17 @@ public class ChartTypeActivity extends BaseActivity {
     private static final String TAG = "@vir ChartTypeActivity";
     @BindView(R.id.chart_list)
     ListView listView;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
     @OnItemClick(R.id.chart_list)
-    void onListItemClick(int position){
+    void onListItemClick(int position) {
 
     }
+
     @Override
     protected int getLayout() {
         return R.layout.activity_chart_type;
@@ -32,8 +34,8 @@ public class ChartTypeActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        String[] listContent = new String[]{"LineChart","BarChart","PieChart"};
-        ListAdapter listAdapter = new ArrayAdapter<>(this,R.layout.list_content,listContent);
+        String[] listContent = new String[]{"LineChart", "BarChart", "PieChart"};
+        ListAdapter listAdapter = new ArrayAdapter<>(this, R.layout.list_content, listContent);
         listView.setAdapter(listAdapter);
     }
 
