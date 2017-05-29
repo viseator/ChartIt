@@ -1,12 +1,20 @@
 package com.viseator.chartit.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.github.mikephil.charting.data.ChartData;
+import com.viseator.chartit.App;
 import com.viseator.chartit.BaseActivity;
 import com.viseator.chartit.R;
+import com.viseator.chartit.data.ChartDataEntity;
+import com.viseator.chartit.data.ChartDataEntityDao;
+import com.viseator.chartit.data.DaoSession;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnItemClick;
@@ -16,10 +24,34 @@ public class ChartTypeActivity extends BaseActivity {
     private static final String TAG = "@vir ChartTypeActivity";
     @BindView(R.id.chart_list)
     ListView listView;
+    DaoSession daoSession;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        daoSession = ((App) getApplication()).getDaoSession();
+//        test();
+    }
+
+    private void test() {
+        ChartDataEntity charData = new ChartDataEntity();
+        charData.setMapValue("Hi");
+        charData.setMainValue("Hello");
+        charData.setId(2L);
+        ChartDataEntityDao chartDataEntityDao = daoSession.getChartDataEntityDao();
+        chartDataEntityDao.insert(charData);
+        chartDataEntityDao.deleteByKey(3L);
+        test1();
+    }
+
+    private void test1() {
+        ChartDataEntity chartDataEntity;
+        ChartDataEntityDao chartDataEntityDao;
+        chartDataEntityDao = daoSession.getChartDataEntityDao();
+        List<ChartDataEntity> list = chartDataEntityDao.queryBuilder().list();
+        for (ChartDataEntity chart : list) {
+            Log.d(TAG, chart.toString());
+        }
     }
 
     @OnItemClick(R.id.chart_list)
