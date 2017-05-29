@@ -1,5 +1,7 @@
 package com.viseator.chartit.data;
 
+import com.github.mikephil.charting.data.DataSet;
+import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.interfaces.datasets.IDataSet;
 
 import java.util.List;
@@ -12,16 +14,16 @@ import java.util.List;
 
 public interface IDataSource {
     interface GetDataCallback{
-        void onDataLoaded(IDataSet dataSet);
+        void onDataLoaded(List<Entry> entries);
     }
 
     void getData(Long createTime,GetDataCallback callback);
 
-    void addData(List<?> mainValues, List<?> mapValues);
+    long addData(List<? extends Entry> entries,String label);
 
     void removeData(Long createTime);
 
-    void updateData(Long createTime, List<?> mainValues, List<?> mapValues);
+    void updateData(Long createTime,List<? extends Entry> entries,String label);
 
 
 }

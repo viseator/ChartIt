@@ -1,5 +1,7 @@
 package com.viseator.chartit.data;
 
+import com.github.mikephil.charting.data.Entry;
+
 import java.util.List;
 
 /**
@@ -9,23 +11,34 @@ import java.util.List;
  */
 
 public class ChartDataRepository implements IDataSource {
-    @Override
-    public void getData(Long createTime, GetDataCallback callback) {
+    private IDataSource mLocalChartData;
 
+    public ChartDataRepository(IDataSource localChartData) {
+        mLocalChartData = localChartData;
     }
 
     @Override
-    public void addData(List<?> mainValues, List<?> mapValues) {
+
+    public void getData(Long createTime, GetDataCallback callback) {
+        mLocalChartData.getData(createTime, callback);
+    }
+
+
+    @Override
+    public long addData(List<? extends Entry> entries, String label) {
+        return mLocalChartData.addData(entries, label);
+    }
+
+    @Override
+    public void updateData(Long createTime, List<? extends Entry> entries, String label) {
+        mLocalChartData.updateData(createTime, entries, label);
 
     }
 
     @Override
     public void removeData(Long createTime) {
+        mLocalChartData.removeData(createTime);
 
     }
 
-    @Override
-    public void updateData(Long createTime, List<?> mainValues, List<?> mapValues) {
-
-    }
 }
