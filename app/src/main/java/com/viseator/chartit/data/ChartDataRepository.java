@@ -39,8 +39,8 @@ public class ChartDataRepository implements IDataSource {
 
 
     @Override
-    public long addData(List<? extends Entry> entries, String label) {
-        return mLocalChartData.addData(entries, label);
+    public void addData(List<? extends Entry> entries, String label) {
+        mLocalChartData.addData(entries, label);
     }
 
     @Override

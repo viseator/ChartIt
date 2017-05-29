@@ -38,36 +38,8 @@ public class ChartTypeActivity extends BaseActivity {
         chartDataEntityDao = daoSession.getChartDataEntityDao();
         mLocalChartData = LocalChartData.getInstance(chartDataEntityDao);
         mChartDataRepository = ChartDataRepository.getInstance(mLocalChartData);
-        test();
     }
 
-    private void test() {
-        List<Entry> list = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            Entry entry = new Entry(((float) Math.random()), ((float) Math.random()));
-            list.add(entry);
-        }
-//        mChartDataRepository.addData(list, "label" + String.valueOf(Math.random()));
-
-        Log.d(TAG, String.valueOf(mChartDataRepository.count()));
-
-        mChartDataRepository.removeData(1);
-        ArrayList<Entry> newList = (ArrayList<Entry>) mChartDataRepository.getData(1);
-
-//        for (Entry entry : newList) {
-//            entry.setX(entry.getX() + 1);
-//        }
-//
-//        mChartDataRepository.updateData(0,newList,"what");
-//
-//        newList = (ArrayList<Entry>) mChartDataRepository.getData(time);
-
-        for (Entry entry : newList) {
-            Log.d(TAG, String.valueOf(entry.getX()) + " : " + String.valueOf(entry.getY()));
-
-        }
-
-    }
 
 
     @OnItemClick(R.id.chart_list)

@@ -59,14 +59,13 @@ public class LocalChartData implements IDataSource {
     }
 
     @Override
-    public long addData(List<? extends Entry> entries, String label) {
+    public void addData(List<? extends Entry> entries, String label) {
         ChartDataEntity chartDataEntity = new ChartDataEntity();
         setEntityByEntries(chartDataEntity,entries);
         chartDataEntity.setLabel(label);
         chartDataEntity.setTime(System.currentTimeMillis());
         chartDataEntity.setPos(count());
         mChartDataEntityDao.insert(chartDataEntity);
-        return chartDataEntity.getTime();
     }
 
     @Override

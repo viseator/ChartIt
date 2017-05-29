@@ -17,7 +17,7 @@ public interface IDataSource {
 
     List<? extends Entry> getData(Integer pos);
 
-    long addData(List<? extends Entry> entries,String label);
+    void addData(List<? extends Entry> entries,String label);
 
     void removeData(Integer pos);
 
