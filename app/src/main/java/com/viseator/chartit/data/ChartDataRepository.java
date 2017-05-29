@@ -13,14 +13,13 @@ import java.util.List;
 public class ChartDataRepository implements IDataSource {
     private IDataSource mLocalChartData;
 
-    public ChartDataRepository(IDataSource localChartData) {
-        mLocalChartData = localChartData;
+    @Override
+    public List<? extends Entry> getData(Long createTime) {
+        return mLocalChartData.getData(createTime);
     }
 
-    @Override
-
-    public void getData(Long createTime, GetDataCallback callback) {
-        mLocalChartData.getData(createTime, callback);
+    public ChartDataRepository(IDataSource localChartData) {
+        mLocalChartData = localChartData;
     }
 
 

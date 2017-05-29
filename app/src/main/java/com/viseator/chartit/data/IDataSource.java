@@ -17,7 +17,7 @@ public interface IDataSource {
         void onDataLoaded(List<Entry> entries);
     }
 
-    void getData(Long createTime,GetDataCallback callback);
+    List<? extends Entry> getData(Long createTime);
 
     long addData(List<? extends Entry> entries,String label);
 

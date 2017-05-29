@@ -1,5 +1,7 @@
 package com.viseator.chartit.data.local;
 
+import android.util.Log;
+
 import com.github.mikephil.charting.data.Entry;
 import com.viseator.chartit.data.ChartDataEntity;
 import com.viseator.chartit.data.ChartDataEntityDao;
@@ -17,6 +19,7 @@ import java.util.List;
 
 public class LocalChartData implements IDataSource {
 
+    private static final String TAG = "@vir LocalChartData";
     private ChartDataEntityDao mChartDataEntityDao;
 
 
@@ -25,8 +28,12 @@ public class LocalChartData implements IDataSource {
     }
 
     @Override
-    public void getData(Long createTime, GetDataCallback callback) {
+    public List<? extends Entry> getData(Long createTime) {
         ChartDataEntity data = getChartDataEntityByTime(createTime);
+        if (data == null) {
+            Log.d(TAG, "NULL!");
+            return null;
+        }
         List<Float> mainValues = DataCoverter.stringToFloats(data.getMainValue());
         List<Float> mapValues = DataCoverter.stringToFloats(data.getMapValue());
         List<String> aliases = DataCoverter.stringToStringList(data.getAlias());
@@ -36,8 +43,7 @@ public class LocalChartData implements IDataSource {
                     aliases == null ? null : aliases.get(i));
             entries.add(entry);
         }
-        callback.onDataLoaded(entries);
-
+        return entries;
     }
 
     @Override
@@ -66,6 +72,9 @@ public class LocalChartData implements IDataSource {
     private ChartDataEntity getChartDataEntityByTime(Long createTime) {
         List<ChartDataEntity> list = mChartDataEntityDao.queryBuilder()
                 .where(ChartDataEntityDao.Properties.Time.eq(createTime)).list();
+        if (list.size() < 1) {
+            return null;
+        }
         return list.get(0);
 
     }
