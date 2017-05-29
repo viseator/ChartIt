@@ -1,24 +1,15 @@
 package com.viseator.chartit.activity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import com.github.mikephil.charting.data.Entry;
 import com.viseator.chartit.App;
 import com.viseator.chartit.BaseActivity;
 import com.viseator.chartit.R;
-import com.viseator.chartit.data.ChartDataEntity;
 import com.viseator.chartit.data.ChartDataEntityDao;
-import com.viseator.chartit.data.ChartDataRepository;
 import com.viseator.chartit.data.DaoSession;
-import com.viseator.chartit.data.IDataSource;
-import com.viseator.chartit.data.local.LocalChartData;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnItemClick;
@@ -36,58 +27,8 @@ public class ChartTypeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         daoSession = ((App) getApplication()).getDaoSession();
         chartDataEntityDao = daoSession.getChartDataEntityDao();
-//        test();
     }
 
-    private void test() {
-/*        LocalChartData localChartData = new LocalChartData(chartDataEntityDao);
-        ChartDataRepository chartDataRepository = new ChartDataRepository(localChartData);
-        List<Entry> list = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            Entry entry = new Entry(((float) Math.random()), ((float) Math.random()),
-                    String.valueOf(Math.random()));
-            list.add(entry);
-        }
-        long time = chartDataRepository.addData(list, "label" + String.valueOf(Math.random()));
-
-
-        Log.d(TAG, String.valueOf(time));
-
-//        chartDataRepository.removeData(1496061637334L);
-        time = 1496061934594L;
-        ArrayList<Entry> newList = (ArrayList<Entry>) chartDataRepository.getData(time);
-
-        for (Entry entry : newList) {
-            entry.setX(entry.getX() + 1);
-        }
-
-        chartDataRepository.updateData(time,newList,"what");
-
-        newList = (ArrayList<Entry>) chartDataRepository.getData(time);
-
-        for (Entry entry : newList) {
-            Log.d(TAG, String.valueOf(entry.getX()) + " : " + String.valueOf(entry.getY()) + " : " +
-                    entry.getData());
-        }
-
-//        ChartDataEntity charData = new ChartDataEntity();
-//        charData.setMapValue("Hi");
-//        charData.setMainValue("Hello");
-//        charData.setId(2L);
-//        chartDataEntityDao.insert(charData);
-//        chartDataEntityDao.deleteByKey(3L);
-//        test1();*/
-    }
-
-    private void test1() {
-        ChartDataEntity chartDataEntity;
-        ChartDataEntityDao chartDataEntityDao;
-        chartDataEntityDao = daoSession.getChartDataEntityDao();
-        List<ChartDataEntity> list = chartDataEntityDao.queryBuilder().list();
-        for (ChartDataEntity chart : list) {
-            Log.d(TAG, chart.toString());
-        }
-    }
 
     @OnItemClick(R.id.chart_list)
     void onListItemClick(int position) {
