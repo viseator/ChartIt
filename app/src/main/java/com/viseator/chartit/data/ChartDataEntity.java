@@ -18,17 +18,19 @@ public class ChartDataEntity {
     private String mainValue;
     private String mapValue;
     private String alias;
+    private String label;
     //Type: 0 for float , 1 for String
     private int type;
     private Long time;
 
-    @Generated(hash = 1813459092)
+    @Generated(hash = 1104394626)
     public ChartDataEntity(Long id, String mainValue, String mapValue, String alias,
-            int type, Long time) {
+            String label, int type, Long time) {
         this.id = id;
         this.mainValue = mainValue;
         this.mapValue = mapValue;
         this.alias = alias;
+        this.label = label;
         this.type = type;
         this.time = time;
     }
@@ -88,5 +90,13 @@ public class ChartDataEntity {
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    public String getLabel() {
+        return this.label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
     }
 }

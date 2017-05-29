@@ -33,6 +33,9 @@ public class DataCoverter {
     }
 
     public static List<Float> stringToFloats(String s) {
+        if (s == null) {
+            return null;
+        }
         List<Float> result = new ArrayList<>();
         StringTokenizer st = new StringTokenizer(s, ";;", false);
         while (st.hasMoreTokens()) {
@@ -42,6 +45,9 @@ public class DataCoverter {
     }
 
     public static List<String> stringToStringList(String s) {
+        if (s == null) {
+            return null;
+        }
         List<String> result = new ArrayList<>();
         StringTokenizer st = new StringTokenizer(s, ";;", false);
         while (st.hasMoreTokens()) {
