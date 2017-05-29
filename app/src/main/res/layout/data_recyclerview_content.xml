@@ -13,14 +13,14 @@
         tools:text="TestLabel"
         />
 
-    <TextView
-        android:id="@+id/list_content_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/list_content_label"
-        android:padding="10dp"
-        tools:text="1997年10月24日"/>
+    <!--<TextView-->
+        <!--android:id="@+id/list_content_time"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_alignTop="@+id/list_content_label"-->
+        <!--android:padding="10dp"-->
+        <!--tools:text="1997年10月24日"/>-->
 
     <TextView
         android:id="@+id/list_content_data"

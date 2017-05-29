@@ -59,6 +59,11 @@ public class LocalChartData implements IDataSource {
     }
 
     @Override
+    public String getLabel(Integer pos) {
+        return getChartDataEntityByPos(pos).getLabel();
+    }
+
+    @Override
     public void addData(List<? extends Entry> entries, String label) {
         ChartDataEntity chartDataEntity = new ChartDataEntity();
         setEntityByEntries(chartDataEntity,entries);

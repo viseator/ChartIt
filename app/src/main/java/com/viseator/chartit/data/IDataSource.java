@@ -11,11 +11,10 @@ import java.util.List;
  */
 
 public interface IDataSource {
-    interface GetDataCallback{
-        void onDataLoaded(List<Entry> entries);
-    }
 
     List<? extends Entry> getData(Integer pos);
+
+    String getLabel(Integer pos);
 
     void addData(List<? extends Entry> entries,String label);
 

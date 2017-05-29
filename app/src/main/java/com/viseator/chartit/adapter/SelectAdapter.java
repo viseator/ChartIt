@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
  * Email: viseator@gmail.com
  */
 
-public class SelectAdapter extends RecyclerView.Adapter {
+public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder> {
     private ChartDataRepository mChartDataRepository;
     private Context mContext;
 
@@ -32,8 +32,6 @@ public class SelectAdapter extends RecyclerView.Adapter {
 
         @BindView(R.id.list_content_label)
         TextView labelView;
-        @BindView(R.id.list_content_time)
-        TextView itemView;
         @BindView(R.id.list_content_data)
         TextView dataView;
 
@@ -43,14 +41,13 @@ public class SelectAdapter extends RecyclerView.Adapter {
         }
     }
 
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public SelectAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(mContext).inflate(R.layout.list_content, parent, false);
         return new ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        //// TODO: 5/29/17 load data by order
+    public void onBindViewHolder(ViewHolder holder, int position) {
 
     }
 

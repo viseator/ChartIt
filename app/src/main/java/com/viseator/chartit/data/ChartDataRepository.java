@@ -33,6 +33,11 @@ public class ChartDataRepository implements IDataSource {
         return mLocalChartData.getData(pos);
     }
 
+    @Override
+    public String getLabel(Integer pos) {
+        return mLocalChartData.getLabel(pos);
+    }
+
     private ChartDataRepository(IDataSource localChartData) {
         mLocalChartData = localChartData;
     }
