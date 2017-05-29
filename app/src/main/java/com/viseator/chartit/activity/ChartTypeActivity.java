@@ -1,6 +1,7 @@
 package com.viseator.chartit.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -9,7 +10,9 @@ import com.viseator.chartit.App;
 import com.viseator.chartit.BaseActivity;
 import com.viseator.chartit.R;
 import com.viseator.chartit.data.ChartDataEntityDao;
+import com.viseator.chartit.data.ChartDataRepository;
 import com.viseator.chartit.data.DaoSession;
+import com.viseator.chartit.data.local.LocalChartData;
 
 import butterknife.BindView;
 import butterknife.OnItemClick;
@@ -21,12 +24,16 @@ public class ChartTypeActivity extends BaseActivity {
     ListView mListView;
     DaoSession daoSession;
     ChartDataEntityDao chartDataEntityDao;
+    ChartDataRepository mChartDataRepository;
+    LocalChartData mLocalChartData;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         daoSession = ((App) getApplication()).getDaoSession();
         chartDataEntityDao = daoSession.getChartDataEntityDao();
+        mLocalChartData = LocalChartData.getInstance(chartDataEntityDao);
+        mChartDataRepository = ChartDataRepository.getInstance(mLocalChartData);
     }
 
 

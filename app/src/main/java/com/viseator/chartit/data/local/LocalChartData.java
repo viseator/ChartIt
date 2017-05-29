@@ -19,11 +19,23 @@ import java.util.List;
 
 public class LocalChartData implements IDataSource {
 
+    private static LocalChartData INSTANCE = null;
     private static final String TAG = "@vir LocalChartData";
     private ChartDataEntityDao mChartDataEntityDao;
 
 
-    public LocalChartData(ChartDataEntityDao chartDataEntityDao) {
+    public static LocalChartData getInstance() {
+        return INSTANCE;
+    }
+
+    public static LocalChartData getInstance(ChartDataEntityDao chartDataEntityDao) {
+        if (INSTANCE == null) {
+            INSTANCE = new LocalChartData(chartDataEntityDao);
+        }
+        return INSTANCE;
+    }
+
+    private LocalChartData(ChartDataEntityDao chartDataEntityDao) {
         mChartDataEntityDao = chartDataEntityDao;
     }
 
@@ -55,6 +67,11 @@ public class LocalChartData implements IDataSource {
 
         mChartDataEntityDao.insert(chartDataEntity);
         return chartDataEntity.getTime();
+    }
+
+    @Override
+    public int count() {
+        return ((int) mChartDataEntityDao.count());
     }
 
     @Override

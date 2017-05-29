@@ -11,14 +11,29 @@ import java.util.List;
  */
 
 public class ChartDataRepository implements IDataSource {
+    private static ChartDataRepository INSTANCE = null;
     private IDataSource mLocalChartData;
 
+    @Override
+    public int count() {
+        return mLocalChartData.count();
+    }
+
+    public static ChartDataRepository getInstance() {
+        return INSTANCE;
+    }
+    public static ChartDataRepository getInstance(IDataSource localChartData) {
+        if (INSTANCE == null) {
+            INSTANCE = new ChartDataRepository(localChartData);
+        }
+        return INSTANCE;
+    }
     @Override
     public List<? extends Entry> getData(Long createTime) {
         return mLocalChartData.getData(createTime);
     }
 
-    public ChartDataRepository(IDataSource localChartData) {
+    private ChartDataRepository(IDataSource localChartData) {
         mLocalChartData = localChartData;
     }
 

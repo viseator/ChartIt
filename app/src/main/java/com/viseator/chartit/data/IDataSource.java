@@ -1,8 +1,6 @@
 package com.viseator.chartit.data;
 
-import com.github.mikephil.charting.data.DataSet;
 import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.interfaces.datasets.IDataSet;
 
 import java.util.List;
 
@@ -25,5 +23,6 @@ public interface IDataSource {
 
     void updateData(Long createTime,List<? extends Entry> entries,String label);
 
+    int count();
 
 }
