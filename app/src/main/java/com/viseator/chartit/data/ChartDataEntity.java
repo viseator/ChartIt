@@ -19,24 +19,27 @@ public class ChartDataEntity {
     private String mapValue;
     private String alias;
     private String label;
+    private Integer pos;
     //Type: 0 for float , 1 for String
     private int type;
     private Long time;
 
-    @Generated(hash = 1104394626)
+
+    @Generated(hash = 812315989)
+    public ChartDataEntity() {
+    }
+
+    @Generated(hash = 1831722343)
     public ChartDataEntity(Long id, String mainValue, String mapValue, String alias,
-            String label, int type, Long time) {
+            String label, Integer pos, int type, Long time) {
         this.id = id;
         this.mainValue = mainValue;
         this.mapValue = mapValue;
         this.alias = alias;
         this.label = label;
+        this.pos = pos;
         this.type = type;
         this.time = time;
-    }
-
-    @Generated(hash = 812315989)
-    public ChartDataEntity() {
     }
 
     public Long getId() {
@@ -99,4 +102,14 @@ public class ChartDataEntity {
     public void setLabel(String label) {
         this.label = label;
     }
+
+    public Integer getPos() {
+        return this.pos;
+    }
+
+    public void setPos(Integer pos) {
+        this.pos = pos;
+    }
+
+
 }

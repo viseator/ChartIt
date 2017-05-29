@@ -40,8 +40,8 @@ public class LocalChartData implements IDataSource {
     }
 
     @Override
-    public List<? extends Entry> getData(Long createTime) {
-        ChartDataEntity data = getChartDataEntityByTime(createTime);
+    public List<? extends Entry> getData(Integer pos) {
+        ChartDataEntity data = getChartDataEntityByPos(pos);
         if (data == null) {
             Log.d(TAG, "NULL!");
             return null;
@@ -64,7 +64,7 @@ public class LocalChartData implements IDataSource {
         setEntityByEntries(chartDataEntity,entries);
         chartDataEntity.setLabel(label);
         chartDataEntity.setTime(System.currentTimeMillis());
-
+        chartDataEntity.setPos(count());
         mChartDataEntityDao.insert(chartDataEntity);
         return chartDataEntity.getTime();
     }
@@ -75,20 +75,30 @@ public class LocalChartData implements IDataSource {
     }
 
     @Override
-    public void removeData(Long createTime) {
-        mChartDataEntityDao.delete(getChartDataEntityByTime(createTime));
+    public void removeData(Integer pos) {
+        mChartDataEntityDao.delete(getChartDataEntityByPos(pos));
+
+        List<ChartDataEntity> list = mChartDataEntityDao.queryBuilder()
+                .where(ChartDataEntityDao.Properties.Pos.gt(pos)).list();
+        for (ChartDataEntity entity : list) {
+            entity.setPos(entity.getPos() - 1);
+            mChartDataEntityDao.update(entity);
+        }
     }
 
     @Override
-    public void updateData(Long createTime, List<? extends Entry> entries, String label) {
-        ChartDataEntity data = getChartDataEntityByTime(createTime);
+    public void updateData(Integer pos, List<? extends Entry> entries, String label) {
+        ChartDataEntity data = getChartDataEntityByPos(pos);
+        if (data == null) {
+            return;
+        }
         setEntityByEntries(data,entries);
         data.setLabel(label);
     }
 
-    private ChartDataEntity getChartDataEntityByTime(Long createTime) {
+    private ChartDataEntity getChartDataEntityByPos(Integer pos) {
         List<ChartDataEntity> list = mChartDataEntityDao.queryBuilder()
-                .where(ChartDataEntityDao.Properties.Time.eq(createTime)).list();
+                .where(ChartDataEntityDao.Properties.Pos.eq(pos)).list();
         if (list.size() < 1) {
             return null;
         }

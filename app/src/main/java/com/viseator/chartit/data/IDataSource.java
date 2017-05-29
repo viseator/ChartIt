@@ -15,13 +15,13 @@ public interface IDataSource {
         void onDataLoaded(List<Entry> entries);
     }
 
-    List<? extends Entry> getData(Long createTime);
+    List<? extends Entry> getData(Integer pos);
 
     long addData(List<? extends Entry> entries,String label);
 
-    void removeData(Long createTime);
+    void removeData(Integer pos);
 
-    void updateData(Long createTime,List<? extends Entry> entries,String label);
+    void updateData(Integer pos, List<? extends Entry> entries, String label);
 
     int count();
 

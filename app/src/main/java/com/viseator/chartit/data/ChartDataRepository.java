@@ -29,8 +29,8 @@ public class ChartDataRepository implements IDataSource {
         return INSTANCE;
     }
     @Override
-    public List<? extends Entry> getData(Long createTime) {
-        return mLocalChartData.getData(createTime);
+    public List<? extends Entry> getData(Integer pos) {
+        return mLocalChartData.getData(pos);
     }
 
     private ChartDataRepository(IDataSource localChartData) {
@@ -44,14 +44,14 @@ public class ChartDataRepository implements IDataSource {
     }
 
     @Override
-    public void updateData(Long createTime, List<? extends Entry> entries, String label) {
-        mLocalChartData.updateData(createTime, entries, label);
+    public void updateData(Integer pos, List<? extends Entry> entries, String label) {
+        mLocalChartData.updateData(pos, entries, label);
 
     }
 
     @Override
-    public void removeData(Long createTime) {
-        mLocalChartData.removeData(createTime);
+    public void removeData(Integer pos) {
+        mLocalChartData.removeData(pos);
 
     }
 

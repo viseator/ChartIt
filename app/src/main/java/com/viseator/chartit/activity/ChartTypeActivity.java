@@ -6,6 +6,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.github.mikephil.charting.data.Entry;
 import com.viseator.chartit.App;
 import com.viseator.chartit.BaseActivity;
 import com.viseator.chartit.R;
@@ -13,6 +14,9 @@ import com.viseator.chartit.data.ChartDataEntityDao;
 import com.viseator.chartit.data.ChartDataRepository;
 import com.viseator.chartit.data.DaoSession;
 import com.viseator.chartit.data.local.LocalChartData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnItemClick;
@@ -34,6 +38,35 @@ public class ChartTypeActivity extends BaseActivity {
         chartDataEntityDao = daoSession.getChartDataEntityDao();
         mLocalChartData = LocalChartData.getInstance(chartDataEntityDao);
         mChartDataRepository = ChartDataRepository.getInstance(mLocalChartData);
+        test();
+    }
+
+    private void test() {
+        List<Entry> list = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            Entry entry = new Entry(((float) Math.random()), ((float) Math.random()));
+            list.add(entry);
+        }
+//        mChartDataRepository.addData(list, "label" + String.valueOf(Math.random()));
+
+        Log.d(TAG, String.valueOf(mChartDataRepository.count()));
+
+        mChartDataRepository.removeData(1);
+        ArrayList<Entry> newList = (ArrayList<Entry>) mChartDataRepository.getData(1);
+
+//        for (Entry entry : newList) {
+//            entry.setX(entry.getX() + 1);
+//        }
+//
+//        mChartDataRepository.updateData(0,newList,"what");
+//
+//        newList = (ArrayList<Entry>) mChartDataRepository.getData(time);
+
+        for (Entry entry : newList) {
+            Log.d(TAG, String.valueOf(entry.getX()) + " : " + String.valueOf(entry.getY()));
+
+        }
+
     }
 
 
