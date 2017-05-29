@@ -17,6 +17,8 @@ public class ChartDataEntity {
 
     private String mainValue;
     private String mapValue;
+    //Type: 0 for float , 1 for String
+    private int type;
     private Long time;
 
     @Generated(hash = 190162712)

@@ -10,10 +10,18 @@ import java.util.List;
  * Email: viseator@gmail.com
  */
 
-public class IDataSource {
+public interface IDataSource {
     interface GetDataCallback{
         void onDataLoaded(List<IDataSet> dataSets);
     }
+
+    void getData(Long createTime,GetDataCallback callback);
+
+    void addData(List<?> mainValues, List<?> mapValues);
+
+    void removeData(Long createTime);
+
+    void updateData(Long createTime, List<?> mainValues, List<?> mapValues);
 
 
 }
