@@ -17,15 +17,19 @@ public class ChartDataEntity {
 
     private String mainValue;
     private String mapValue;
+    private String alias;
     //Type: 0 for float , 1 for String
     private int type;
     private Long time;
 
-    @Generated(hash = 190162712)
-    public ChartDataEntity(Long id, String mainValue, String mapValue, Long time) {
+    @Generated(hash = 1813459092)
+    public ChartDataEntity(Long id, String mainValue, String mapValue, String alias,
+            int type, Long time) {
         this.id = id;
         this.mainValue = mainValue;
         this.mapValue = mapValue;
+        this.alias = alias;
+        this.type = type;
         this.time = time;
     }
 
@@ -68,5 +72,21 @@ public class ChartDataEntity {
 
     public void setTime(Long time) {
         this.time = time;
+    }
+
+    public String getAlias() {
+        return this.alias;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
+    }
+
+    public int getType() {
+        return this.type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 }

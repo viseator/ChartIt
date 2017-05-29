@@ -13,7 +13,9 @@ import com.viseator.chartit.R;
 import com.viseator.chartit.data.ChartDataEntity;
 import com.viseator.chartit.data.ChartDataEntityDao;
 import com.viseator.chartit.data.DaoSession;
+import com.viseator.chartit.utils.DataCoverter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -36,13 +38,13 @@ public class ChartTypeActivity extends BaseActivity {
     }
 
     private void test() {
-        ChartDataEntity charData = new ChartDataEntity();
-        charData.setMapValue("Hi");
-        charData.setMainValue("Hello");
-        charData.setId(2L);
-        chartDataEntityDao.insert(charData);
-        chartDataEntityDao.deleteByKey(3L);
-        test1();
+//        ChartDataEntity charData = new ChartDataEntity();
+//        charData.setMapValue("Hi");
+//        charData.setMainValue("Hello");
+//        charData.setId(2L);
+//        chartDataEntityDao.insert(charData);
+//        chartDataEntityDao.deleteByKey(3L);
+//        test1();
     }
 
     private void test1() {
