@@ -25,11 +25,13 @@ public class ChartTypeActivity extends BaseActivity {
     @BindView(R.id.chart_list)
     ListView listView;
     DaoSession daoSession;
+    ChartDataEntityDao chartDataEntityDao;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         daoSession = ((App) getApplication()).getDaoSession();
+        chartDataEntityDao = daoSession.getChartDataEntityDao();
 //        test();
     }
 
@@ -38,7 +40,6 @@ public class ChartTypeActivity extends BaseActivity {
         charData.setMapValue("Hi");
         charData.setMainValue("Hello");
         charData.setId(2L);
-        ChartDataEntityDao chartDataEntityDao = daoSession.getChartDataEntityDao();
         chartDataEntityDao.insert(charData);
         chartDataEntityDao.deleteByKey(3L);
         test1();

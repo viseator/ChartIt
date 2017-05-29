@@ -12,7 +12,7 @@ import java.util.List;
 
 public interface IDataSource {
     interface GetDataCallback{
-        void onDataLoaded(List<IDataSet> dataSets);
+        void onDataLoaded(IDataSet dataSet);
     }
 
     void getData(Long createTime,GetDataCallback callback);
