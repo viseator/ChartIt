@@ -43,7 +43,6 @@ public class LocalChartData implements IDataSource {
     public List<? extends Entry> getData(Integer pos) {
         ChartDataEntity data = getChartDataEntityByPos(pos);
         if (data == null) {
-            Log.d(TAG, "NULL!");
             return null;
         }
         List<Float> mainValues = DataCoverter.stringToFloats(data.getMainValue());
@@ -104,6 +103,7 @@ public class LocalChartData implements IDataSource {
         List<ChartDataEntity> list = mChartDataEntityDao.queryBuilder()
                 .where(ChartDataEntityDao.Properties.Pos.eq(pos)).list();
         if (list.size() < 1) {
+            Log.e(TAG, "did not find data! Pos :" +String.valueOf(pos));
             return null;
         }
         return list.get(0);

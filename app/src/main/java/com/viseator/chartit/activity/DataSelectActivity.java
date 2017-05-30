@@ -39,7 +39,7 @@ public class DataSelectActivity extends BaseActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        test();
+//        test();
     }
     private void test() {
         List<Entry> list = new ArrayList<>();

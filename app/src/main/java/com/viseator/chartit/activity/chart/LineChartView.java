@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.interfaces.dataprovider.LineDataProvider;
 import com.viseator.chartit.BaseView;
 
@@ -30,5 +31,10 @@ public class LineChartView extends LineChart implements LineChartContract.View{
     @Override
     public void setPresenter(LineChartContract.Presenter presenter) {
         mPresenter = presenter;
+    }
+
+    @Override
+    public void setData(LineData lineData) {
+        setData(lineData);
     }
 }

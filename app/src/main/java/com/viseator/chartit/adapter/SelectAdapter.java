@@ -60,9 +60,8 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: 5/30/17 Jump to chart
                 Intent intent = new Intent(mContext,LineChartActivity.class);
-                intent.putExtra("positon", position);
+                intent.putExtra("position", position);
                 mContext.startActivity(intent);
             }
         });

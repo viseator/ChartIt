@@ -1,5 +1,6 @@
 package com.viseator.chartit.activity.chart;
 
+import com.github.mikephil.charting.data.LineData;
 import com.viseator.chartit.BasePresenter;
 import com.viseator.chartit.BaseView;
 
@@ -11,10 +12,11 @@ import com.viseator.chartit.BaseView;
 
 public interface LineChartContract {
     interface Presenter extends BasePresenter {
-
+        void initView();
     }
 
     interface View extends BaseView<Presenter> {
+        void setData(LineData lineData);
 
     }
 

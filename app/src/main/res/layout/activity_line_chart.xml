@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context="com.viseator.chartit.activity.chart.LineChartActivity">
     <com.viseator.chartit.activity.chart.LineChartView
+        android:id="@+id/line_chart"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
