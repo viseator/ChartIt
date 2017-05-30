@@ -30,7 +30,7 @@
         </activity>
         <activity
             android:theme="@style/AppTheme.NoActionBar"
-            android:name=".activity.LineChartActivity">
+            android:name=".activity.chart.LineChartActivity">
 
 
         </activity>

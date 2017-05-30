@@ -44,8 +44,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract int getLayout();
 
-    protected abstract void initView();
-
     protected abstract void baseInit();
+
+    protected abstract void initView();
 }
 
