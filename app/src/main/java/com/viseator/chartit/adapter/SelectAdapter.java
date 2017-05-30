@@ -2,6 +2,7 @@ package com.viseator.chartit.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ import butterknife.ButterKnife;
  */
 
 public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder> {
+    private static final String TAG = "@vir SelectAdapter";
     private ChartDataRepository mChartDataRepository;
     private Context mContext;
 
@@ -38,8 +40,11 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         @BindView(R.id.list_content_label)
         TextView labelView;
 
+        View itemView;
+
         public ViewHolder(View itemView) {
             super(itemView);
+            this.itemView = itemView;
             ButterKnife.bind(this,itemView);
         }
     }
@@ -50,7 +55,13 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: 5/30/17 Jump to chart
+            }
+        });
         holder.labelView.setText(mChartDataRepository.getLabel(position));
         List<Entry> data = (List<Entry>) mChartDataRepository.getData(position);
         StringBuilder sb = new StringBuilder();
@@ -58,6 +69,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
             sb.append(entry.getX() + ":" + entry.getY() + " ");
         }
         holder.dataView.setText(sb);
+
     }
 
     @Override
