@@ -1,6 +1,7 @@
 package com.viseator.chartit.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.github.mikephil.charting.data.Entry;
 import com.viseator.chartit.R;
+import com.viseator.chartit.activity.LineChartActivity;
 import com.viseator.chartit.data.ChartDataRepository;
 
 import java.util.List;
@@ -60,6 +62,8 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
             @Override
             public void onClick(View v) {
                 // TODO: 5/30/17 Jump to chart
+                Intent intent = new Intent(mContext,LineChartActivity.class);
+                mContext.startActivity(intent);
             }
         });
         holder.labelView.setText(mChartDataRepository.getLabel(position));
