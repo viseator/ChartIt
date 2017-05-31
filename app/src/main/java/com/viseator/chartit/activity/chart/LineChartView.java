@@ -35,6 +35,6 @@ public class LineChartView extends LineChart implements LineChartContract.View{
 
     @Override
     public void setData(LineData lineData) {
-        setData(lineData);
+        super.setData(lineData);
     }
 }

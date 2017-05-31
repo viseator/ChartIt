@@ -8,6 +8,7 @@ import android.util.Log;
 import android.widget.ListView;
 
 import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.utils.EntryXComparator;
 import com.viseator.chartit.App;
 import com.viseator.chartit.BaseActivity;
 import com.viseator.chartit.R;
@@ -18,6 +19,7 @@ import com.viseator.chartit.data.DaoSession;
 import com.viseator.chartit.data.local.LocalChartData;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -39,7 +41,9 @@ public class DataSelectActivity extends BaseActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        test();
+//        for(int i = 0;i < 10;i++) {
+//            test();
+//        }
     }
     private void test() {
         List<Entry> list = new ArrayList<>();
@@ -47,6 +51,7 @@ public class DataSelectActivity extends BaseActivity {
             Entry entry = new Entry(((float) Math.random()), ((float) Math.random()));
             list.add(entry);
         }
+        Collections.sort(list,new EntryXComparator());
         mChartDataRepository.addData(list, "label");
 
     }
