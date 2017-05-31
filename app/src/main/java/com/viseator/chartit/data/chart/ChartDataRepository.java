@@ -58,7 +58,6 @@ public class ChartDataRepository implements IDataSource {
     @Override
     public void removeData(Integer pos) {
         mLocalChartData.removeData(pos);
-
     }
 
 }

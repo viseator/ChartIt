@@ -6,6 +6,7 @@ import com.viseator.chartit.BaseActivity;
 import com.viseator.chartit.R;
 import com.viseator.chartit.data.chart.ChartDataRepository;
 import com.viseator.chartit.data.chart.local.LocalChartData;
+import com.viseator.chartit.data.style.ChartStyle;
 
 import butterknife.BindView;
 
@@ -20,6 +21,7 @@ public class LineChartActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setFullScreen();
+        ChartStyle.getChartStyleEntity(getChartStyleDao());
     }
 
     @Override
