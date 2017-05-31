@@ -11,6 +11,10 @@ import com.github.mikephil.charting.components.YAxis;
 public class YAxisSetter  implements IYAxisSetter{
     private YAxis mYAxis;
 
+    public YAxisSetter(YAxis YAxis) {
+        mYAxis = YAxis;
+    }
+
     @Override
     public void setEnabled(Boolean enabled) {
         mYAxis.setEnabled(enabled);

@@ -12,6 +12,10 @@ public class XAxisSetter implements IXAxisSetter {
 
     private XAxis mXAxis;
 
+    public XAxisSetter(XAxis XAxis) {
+        mXAxis = XAxis;
+    }
+
     @Override
     public void setEnabled(Boolean enabled) {
         mXAxis.setEnabled(enabled);

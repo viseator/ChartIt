@@ -3,13 +3,18 @@ package com.viseator.chartit.activity.chart;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
+import android.util.Log;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.dataprovider.LineDataProvider;
 import com.viseator.chartit.BaseView;
+import com.viseator.chartit.utils.axis.XAxisSetter;
+import com.viseator.chartit.utils.axis.YAxisSetter;
 
 /**
  * Created by viseator on 5/30/17.
@@ -18,7 +23,10 @@ import com.viseator.chartit.BaseView;
  */
 
 public class LineChartView extends LineChart implements LineChartContract.View{
+    private static final String TAG = "@vir LineChartView";
     private LineChartContract.Presenter mPresenter;
+    private XAxisSetter mXAxisSetter;
+    private YAxisSetter mYAxisSetter;
     public LineChartView(Context context) {
         super(context);
     }
@@ -43,6 +51,11 @@ public class LineChartView extends LineChart implements LineChartContract.View{
 
     @Override
     public void init(LineData lineData) {
+        getAxisRight().setEnabled(false);
+        XAxis xAxis = getXAxis();
+        YAxis yAxis  = getAxisLeft();
+        mXAxisSetter = new XAxisSetter(xAxis);
+        mYAxisSetter = new YAxisSetter(yAxis);
         super.setData(lineData);
         super.setDescription(null);
     }
