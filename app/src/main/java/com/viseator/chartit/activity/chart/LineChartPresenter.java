@@ -1,5 +1,7 @@
 package com.viseator.chartit.activity.chart;
 
+import android.graphics.Color;
+
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -29,6 +31,10 @@ public class LineChartPresenter implements LineChartContract.Presenter {
     public void initView() {
         List<Entry> entries = (List<Entry>) mChartDataRepo.getData(mPos);
         LineDataSet lineDataSet = new LineDataSet(entries, mChartDataRepo.getLabel(mPos));
+
+        lineDataSet.setDrawFilled(true);
+        lineDataSet.setFillColor(Color.parseColor("#328912"));
+        lineDataSet.setFillAlpha(255);
         LineData lineData = new LineData(lineDataSet);
         mView.init(lineData);
     }
