@@ -1,4 +1,4 @@
-package com.viseator.chartit.data;
+package com.viseator.chartit.data.chart;
 
 import com.github.mikephil.charting.data.Entry;
 

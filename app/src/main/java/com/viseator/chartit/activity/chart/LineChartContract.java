@@ -18,6 +18,8 @@ public interface LineChartContract {
     interface View extends BaseView<Presenter> {
         void setData(LineData lineData);
 
+        void init(LineData lineData);
+
     }
 
 }

@@ -3,7 +3,7 @@ package com.viseator.chartit.activity.chart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.viseator.chartit.data.IDataSource;
+import com.viseator.chartit.data.chart.IDataSource;
 
 import java.util.List;
 
@@ -30,7 +30,7 @@ public class LineChartPresenter implements LineChartContract.Presenter {
         List<Entry> entries = (List<Entry>) mChartDataRepo.getData(mPos);
         LineDataSet lineDataSet = new LineDataSet(entries, mChartDataRepo.getLabel(mPos));
         LineData lineData = new LineData(lineDataSet);
-        mView.setData(lineData);
+        mView.init(lineData);
     }
 
 }

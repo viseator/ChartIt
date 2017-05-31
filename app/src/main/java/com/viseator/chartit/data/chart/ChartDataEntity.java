@@ -1,4 +1,4 @@
-package com.viseator.chartit.data;
+package com.viseator.chartit.data.chart;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;

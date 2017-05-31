@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.github.mikephil.charting.data.Entry;
 import com.viseator.chartit.R;
 import com.viseator.chartit.activity.chart.LineChartActivity;
-import com.viseator.chartit.data.ChartDataRepository;
+import com.viseator.chartit.data.chart.ChartDataRepository;
 
 import java.util.List;
 

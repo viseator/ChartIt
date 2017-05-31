@@ -1,22 +1,17 @@
 package com.viseator.chartit.activity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import com.github.mikephil.charting.data.Entry;
 import com.viseator.chartit.App;
 import com.viseator.chartit.BaseActivity;
 import com.viseator.chartit.R;
 import com.viseator.chartit.data.ChartDataEntityDao;
-import com.viseator.chartit.data.ChartDataRepository;
+import com.viseator.chartit.data.chart.ChartDataRepository;
 import com.viseator.chartit.data.DaoSession;
-import com.viseator.chartit.data.local.LocalChartData;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.viseator.chartit.data.chart.local.LocalChartData;
 
 import butterknife.BindView;
 import butterknife.OnItemClick;

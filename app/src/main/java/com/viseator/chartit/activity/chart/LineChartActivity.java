@@ -4,8 +4,8 @@ import android.os.Bundle;
 
 import com.viseator.chartit.BaseActivity;
 import com.viseator.chartit.R;
-import com.viseator.chartit.data.ChartDataRepository;
-import com.viseator.chartit.data.local.LocalChartData;
+import com.viseator.chartit.data.chart.ChartDataRepository;
+import com.viseator.chartit.data.chart.local.LocalChartData;
 
 import butterknife.BindView;
 

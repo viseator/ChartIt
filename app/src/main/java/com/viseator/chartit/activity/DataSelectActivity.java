@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.widget.ListView;
 
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.utils.EntryXComparator;
@@ -14,9 +12,9 @@ import com.viseator.chartit.BaseActivity;
 import com.viseator.chartit.R;
 import com.viseator.chartit.adapter.SelectAdapter;
 import com.viseator.chartit.data.ChartDataEntityDao;
-import com.viseator.chartit.data.ChartDataRepository;
+import com.viseator.chartit.data.chart.ChartDataRepository;
 import com.viseator.chartit.data.DaoSession;
-import com.viseator.chartit.data.local.LocalChartData;
+import com.viseator.chartit.data.chart.local.LocalChartData;
 
 import java.util.ArrayList;
 import java.util.Collections;

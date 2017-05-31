@@ -1,11 +1,11 @@
-package com.viseator.chartit.data.local;
+package com.viseator.chartit.data.chart.local;
 
 import android.util.Log;
 
 import com.github.mikephil.charting.data.Entry;
-import com.viseator.chartit.data.ChartDataEntity;
+import com.viseator.chartit.data.chart.ChartDataEntity;
 import com.viseator.chartit.data.ChartDataEntityDao;
-import com.viseator.chartit.data.IDataSource;
+import com.viseator.chartit.data.chart.IDataSource;
 import com.viseator.chartit.utils.DataCoverter;
 
 import java.util.ArrayList;

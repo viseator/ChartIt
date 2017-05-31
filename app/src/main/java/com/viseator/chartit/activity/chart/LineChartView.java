@@ -1,10 +1,13 @@
 package com.viseator.chartit.activity.chart;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.AttributeSet;
 
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.dataprovider.LineDataProvider;
 import com.viseator.chartit.BaseView;
 
@@ -37,4 +40,12 @@ public class LineChartView extends LineChart implements LineChartContract.View{
     public void setData(LineData lineData) {
         super.setData(lineData);
     }
+
+    @Override
+    public void init(LineData lineData) {
+        super.setData(lineData);
+        super.setDescription(null);
+    }
+
+
 }
