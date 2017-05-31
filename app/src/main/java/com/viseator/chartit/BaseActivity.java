@@ -6,8 +6,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.viseator.chartit.data.ChartDataEntityDao;
-import com.viseator.chartit.data.DaoSession;
+import com.viseator.chartit.data.chart.ChartDataEntityDao;
+import com.viseator.chartit.data.style.ChartStyleEntityDao;
+import com.viseator.chartit.data.style.DaoSession;
 
 import butterknife.ButterKnife;
 
@@ -51,9 +52,15 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract void initView();
 
-    protected ChartDataEntityDao getDao() {
+    protected ChartDataEntityDao getChartDataDao() {
         DaoSession daoSession = ((App) getApplication()).getDaoSession();
         return daoSession.getChartDataEntityDao();
     }
+
+    protected ChartStyleEntityDao getChartStyleDao() {
+        DaoSession daoSession = ((App) getApplication()).getDaoSession();
+        return daoSession.getChartStyleEntityDao();
+    }
+
 }
 

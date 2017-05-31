@@ -11,10 +11,10 @@ import com.viseator.chartit.App;
 import com.viseator.chartit.BaseActivity;
 import com.viseator.chartit.R;
 import com.viseator.chartit.adapter.SelectAdapter;
-import com.viseator.chartit.data.ChartDataEntityDao;
+import com.viseator.chartit.data.chart.ChartDataEntityDao;
 import com.viseator.chartit.data.chart.ChartDataRepository;
-import com.viseator.chartit.data.DaoSession;
 import com.viseator.chartit.data.chart.local.LocalChartData;
+import com.viseator.chartit.data.style.DaoSession;
 
 import java.util.ArrayList;
 import java.util.Collections;

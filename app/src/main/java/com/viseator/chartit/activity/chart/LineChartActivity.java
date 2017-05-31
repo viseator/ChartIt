@@ -31,7 +31,7 @@ public class LineChartActivity extends BaseActivity {
     protected void baseInit() {
         mPos = getIntent().getIntExtra("position", -1);
         mPresenter = new LineChartPresenter(ChartDataRepository.
-                getInstance(LocalChartData.getInstance(getDao())), mLineChartView,mPos);
+                getInstance(LocalChartData.getInstance(getChartDataDao())), mLineChartView,mPos);
     }
 
     @Override

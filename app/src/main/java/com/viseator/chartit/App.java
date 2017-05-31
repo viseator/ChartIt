@@ -2,8 +2,8 @@ package com.viseator.chartit;
 
 import android.app.Application;
 
-import com.viseator.chartit.data.DaoMaster;
-import com.viseator.chartit.data.DaoSession;
+import com.viseator.chartit.data.style.DaoMaster;
+import com.viseator.chartit.data.style.DaoSession;
 
 import org.greenrobot.greendao.database.Database;
 

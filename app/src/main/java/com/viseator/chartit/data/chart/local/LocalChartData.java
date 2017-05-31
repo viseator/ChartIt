@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.github.mikephil.charting.data.Entry;
 import com.viseator.chartit.data.chart.ChartDataEntity;
-import com.viseator.chartit.data.ChartDataEntityDao;
+import com.viseator.chartit.data.chart.ChartDataEntityDao;
 import com.viseator.chartit.data.chart.IDataSource;
 import com.viseator.chartit.utils.DataCoverter;
 

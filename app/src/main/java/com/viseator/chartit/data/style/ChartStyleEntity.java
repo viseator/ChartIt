@@ -21,7 +21,7 @@ public class ChartStyleEntity {
     private String gridColor;
     private String borderColor;
     private float borderWidth;
-    private int maxVisiableValueCount;
+    private int maxVisibleValueCount;
     private boolean enableXAxis;
     private boolean enableYAxis;
     private boolean drawXAxisLabel;
@@ -48,19 +48,16 @@ public class ChartStyleEntity {
 
 
 
-    @Generated(hash = 371898038)
-    public ChartStyleEntity(long id, String backgroundColor, String description,
-            Boolean drawGrid, String gridColor, String borderColor,
-            float borderWidth, int maxVisiableValueCount, boolean enableXAxis,
-            boolean enableYAxis, boolean drawXAxisLabel, boolean drawYAxisLabel,
-            boolean drawXAxisLine, boolean drawYAxisLine,
-            boolean drawXAxisGridLines, boolean drawYAxisGridLines,
-            String xAxisGridLineColor, String yAxisGridLineColor,
-            float xAxisGridLineWidth, float yAxisGridLineWidth,
-            boolean setXAxisGridDashLine, boolean setYAxisGridDashLine,
-            float textSize, int xAxisPosition, String xAxisTextColor,
-            String yAxisTextColor, boolean showLeftYAxis, boolean showRightYAxis,
-            boolean drawZeroLine, float zeroLineWidth, String zeroLineColor) {
+    @Generated(hash = 165512841)
+    public ChartStyleEntity(long id, String backgroundColor, String description, Boolean drawGrid,
+            String gridColor, String borderColor, float borderWidth, int maxVisibleValueCount,
+            boolean enableXAxis, boolean enableYAxis, boolean drawXAxisLabel, boolean drawYAxisLabel,
+            boolean drawXAxisLine, boolean drawYAxisLine, boolean drawXAxisGridLines,
+            boolean drawYAxisGridLines, String xAxisGridLineColor, String yAxisGridLineColor,
+            float xAxisGridLineWidth, float yAxisGridLineWidth, boolean setXAxisGridDashLine,
+            boolean setYAxisGridDashLine, float textSize, int xAxisPosition, String xAxisTextColor,
+            String yAxisTextColor, boolean showLeftYAxis, boolean showRightYAxis, boolean drawZeroLine,
+            float zeroLineWidth, String zeroLineColor) {
         this.id = id;
         this.backgroundColor = backgroundColor;
         this.description = description;
@@ -68,7 +65,7 @@ public class ChartStyleEntity {
         this.gridColor = gridColor;
         this.borderColor = borderColor;
         this.borderWidth = borderWidth;
-        this.maxVisiableValueCount = maxVisiableValueCount;
+        this.maxVisibleValueCount = maxVisibleValueCount;
         this.enableXAxis = enableXAxis;
         this.enableYAxis = enableYAxis;
         this.drawXAxisLabel = drawXAxisLabel;
@@ -158,12 +155,12 @@ public class ChartStyleEntity {
         this.borderWidth = borderWidth;
     }
 
-    public int getMaxVisiableValueCount() {
-        return this.maxVisiableValueCount;
+    public int getMaxVisibleValueCount() {
+        return this.maxVisibleValueCount;
     }
 
-    public void setMaxVisiableValueCount(int maxVisiableValueCount) {
-        this.maxVisiableValueCount = maxVisiableValueCount;
+    public void setMaxVisibleValueCount(int maxVisibleValueCount) {
+        this.maxVisibleValueCount = maxVisibleValueCount;
     }
 
     public boolean getEnableXAxis() {

@@ -1,6 +1,7 @@
 package com.viseator.chartit.data.chart;
 
 import com.github.mikephil.charting.data.Entry;
+import com.viseator.chartit.data.style.ChartStyleEntity;
 
 import java.util.List;
 
