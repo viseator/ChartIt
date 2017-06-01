@@ -24,6 +24,10 @@ public class ChartSetStyle {
                 (ChartSetStyleEntityDao.Properties.Position.eq(pos)).list().get(0);
     }
 
+    public List<ChartSetStyleEntity> getAllChartSetStyles() {
+        return mChartSetStyleEntityDao.queryBuilder().list();
+    }
+
     public void addChartSetStyleEntity(ChartSetStyleEntity chartSetStyleEntity) {
         chartSetStyleEntity.setPosition(count());
         mChartSetStyleEntityDao.insert(chartSetStyleEntity);

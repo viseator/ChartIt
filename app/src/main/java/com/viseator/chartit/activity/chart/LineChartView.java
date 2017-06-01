@@ -13,8 +13,11 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.dataprovider.LineDataProvider;
 import com.viseator.chartit.BaseView;
+import com.viseator.chartit.data.style.ChartSetStyleEntity;
 import com.viseator.chartit.utils.axis.XAxisSetter;
 import com.viseator.chartit.utils.axis.YAxisSetter;
+
+import java.util.List;
 
 /**
  * Created by viseator on 5/30/17.
@@ -58,6 +61,11 @@ public class LineChartView extends LineChart implements LineChartContract.View{
         mYAxisSetter = new YAxisSetter(yAxis);
         super.setData(lineData);
         super.setDescription(null);
+    }
+
+    @Override
+    public void showChartSetStylesList(List<ChartSetStyleEntity> list) {
+        // TODO: 6/1/17 show chart set styles in a way
     }
 
 

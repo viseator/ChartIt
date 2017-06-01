@@ -6,6 +6,8 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.viseator.chartit.data.chart.IDataSource;
+import com.viseator.chartit.data.style.ChartSetStyle;
+import com.viseator.chartit.data.style.ChartSetStyleEntity;
 
 import java.util.List;
 
@@ -18,9 +20,15 @@ import java.util.List;
 public class LineChartPresenter implements LineChartContract.Presenter {
 
     private IDataSource mChartDataRepo;
+    private ChartSetStyle mChartSetStyle;
 
     private LineChartContract.View mView;
     private int mPos;
+
+    public void showAllChartSetStyles() {
+        List<ChartSetStyleEntity> list = mChartSetStyle.getAllChartSetStyles();
+        mView.showChartSetStylesList(list);
+    }
 
     public LineChartPresenter(IDataSource dataSource, LineChartContract.View view,int pos) {
         mChartDataRepo = dataSource;
@@ -36,7 +44,7 @@ public class LineChartPresenter implements LineChartContract.Presenter {
         lineDataSet.setFillColor(Color.parseColor("#328912"));
         lineDataSet.setFillAlpha(255);
         LineData lineData = new LineData(lineDataSet);
-        mView.init(lineData);
+        mView.init(lineData); // TODO: 6/1/17 separate init and set data
     }
 
 }
