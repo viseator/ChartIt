@@ -6,6 +6,7 @@ import com.viseator.chartit.BaseActivity;
 import com.viseator.chartit.R;
 import com.viseator.chartit.data.chart.ChartDataRepository;
 import com.viseator.chartit.data.chart.local.LocalChartData;
+import com.viseator.chartit.data.style.ChartSetStyle;
 import com.viseator.chartit.data.style.ChartStyle;
 
 import butterknife.BindView;
@@ -33,7 +34,8 @@ public class LineChartActivity extends BaseActivity {
     protected void baseInit() {
         mPos = getIntent().getIntExtra("position", -1);
         mPresenter = new LineChartPresenter(ChartDataRepository.
-                getInstance(LocalChartData.getInstance(getChartDataDao())), mLineChartView,mPos);
+                getInstance(LocalChartData.getInstance(getChartDataDao())), mLineChartView, new
+                ChartSetStyle(getChartSetStyleEntityDao()), mPos);
     }
 
     @Override

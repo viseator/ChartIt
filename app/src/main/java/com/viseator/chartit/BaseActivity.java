@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.viseator.chartit.data.chart.ChartDataEntityDao;
+import com.viseator.chartit.data.style.ChartSetStyleEntityDao;
 import com.viseator.chartit.data.style.ChartStyleEntityDao;
 import com.viseator.chartit.data.style.DaoSession;
 
@@ -60,6 +61,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected ChartStyleEntityDao getChartStyleDao() {
         DaoSession daoSession = ((App) getApplication()).getDaoSession();
         return daoSession.getChartStyleEntityDao();
+    }
+
+    protected ChartSetStyleEntityDao getChartSetStyleEntityDao() {
+        DaoSession daoSession = ((App) getApplication()).getDaoSession();
+        return daoSession.getChartSetStyleEntityDao();
     }
 
 }

@@ -36,7 +36,7 @@ public class ChartSetStyle {
     public void removeChartSetStyleEntity(int pos) {
         mChartSetStyleEntityDao.delete(getChartSetStyle(pos));
         List<ChartSetStyleEntity> list = mChartSetStyleEntityDao.queryBuilder()
-                .where(ChartDataEntityDao.Properties.Pos.gt(pos)).list();
+                .where(ChartSetStyleEntityDao.Properties.Position.eq(pos)).list();
         for (ChartSetStyleEntity entity : list) {
             entity.setPosition(entity.getPosition() - 1);
             mChartSetStyleEntityDao.update(entity);
@@ -48,7 +48,7 @@ public class ChartSetStyle {
     }
 
     public int count() {
-        return (int) mChartSetStyleEntityDao.count();
+        return ((int) mChartSetStyleEntityDao.count());
     }
 
 }

@@ -59,6 +59,7 @@ public class LineChartView extends LineChart implements LineChartContract.View{
         YAxis yAxis  = getAxisLeft();
         mXAxisSetter = new XAxisSetter(xAxis);
         mYAxisSetter = new YAxisSetter(yAxis);
+        // TODO: 6/1/17 set Axis properties
         super.setData(lineData);
         super.setDescription(null);
     }

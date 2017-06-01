@@ -31,23 +31,18 @@ public class ChartSetStyleEntity {
     private float lineWidth;
     private float circleRadius;
     private Boolean drawCircles;
-    private Boolean drawCubic;
-    private float cubicIntensity;
     private String circleColor;
     private Boolean drawCircleHole;
     private Boolean enableDashedLine;
     private float barSpacePercent;
     private String barShadowColor;
-    private int highlightAlpha;
 
-    @Generated(hash = 259449036)
-    public ChartSetStyleEntity(Long id, int position, String valueTextColor,
-                               float valueTextSize, Boolean drawValues, String highlightColor,
-                               float highlightLineWidth, String fillColor, int fillAlpha,
-                               float lineWidth, float circleRadius, Boolean drawCircles,
-                               Boolean drawCubic, float cubicIntensity, String circleColor,
+    @Generated(hash = 1967214164)
+    public ChartSetStyleEntity(Long id, int position, String valueTextColor, float valueTextSize,
+                               Boolean drawValues, String highlightColor, float highlightLineWidth, String fillColor,
+                               int fillAlpha, float lineWidth, float circleRadius, Boolean drawCircles, String circleColor,
                                Boolean drawCircleHole, Boolean enableDashedLine, float barSpacePercent,
-                               String barShadowColor, int highlightAlpha) {
+                               String barShadowColor) {
         this.id = id;
         this.position = position;
         this.valueTextColor = valueTextColor;
@@ -60,14 +55,11 @@ public class ChartSetStyleEntity {
         this.lineWidth = lineWidth;
         this.circleRadius = circleRadius;
         this.drawCircles = drawCircles;
-        this.drawCubic = drawCubic;
-        this.cubicIntensity = cubicIntensity;
         this.circleColor = circleColor;
         this.drawCircleHole = drawCircleHole;
         this.enableDashedLine = enableDashedLine;
         this.barSpacePercent = barSpacePercent;
         this.barShadowColor = barShadowColor;
-        this.highlightAlpha = highlightAlpha;
     }
 
     @Generated(hash = 120924000)
@@ -80,6 +72,14 @@ public class ChartSetStyleEntity {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public int getPosition() {
+        return this.position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
     }
 
     public String getValueTextColor() {
@@ -162,22 +162,6 @@ public class ChartSetStyleEntity {
         this.drawCircles = drawCircles;
     }
 
-    public Boolean getDrawCubic() {
-        return this.drawCubic;
-    }
-
-    public void setDrawCubic(Boolean drawCubic) {
-        this.drawCubic = drawCubic;
-    }
-
-    public float getCubicIntensity() {
-        return this.cubicIntensity;
-    }
-
-    public void setCubicIntensity(float cubicIntensity) {
-        this.cubicIntensity = cubicIntensity;
-    }
-
     public String getCircleColor() {
         return this.circleColor;
     }
@@ -217,22 +201,5 @@ public class ChartSetStyleEntity {
     public void setBarShadowColor(String barShadowColor) {
         this.barShadowColor = barShadowColor;
     }
-
-    public int getHighlightAlpha() {
-        return this.highlightAlpha;
-    }
-
-    public void setHighlightAlpha(int highlightAlpha) {
-        this.highlightAlpha = highlightAlpha;
-    }
-
-    public int getPosition() {
-        return this.position;
-    }
-
-    public void setPosition(int position) {
-        this.position = position;
-    }
-
 
 }
