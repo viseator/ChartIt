@@ -11,6 +11,8 @@ import com.viseator.chartit.data.style.ChartSetStyleEntity;
 
 import java.util.List;
 
+import static com.viseator.chartit.utils.NullChecker.isSetted;
+
 /**
  * Created by viseator on 5/30/17.
  * Wu Di
@@ -102,21 +104,7 @@ public class LineChartPresenter implements LineChartContract.Presenter {
 
     }
 
-    private boolean isSetted(float a) {
-        return a != 0f;
-    }
 
-    private boolean isSetted(int a) {
-        return a != 0;
-    }
-
-    private boolean isSetted(Boolean a) {
-        return a != null;
-    }
-
-    private boolean isSetted(String a) {
-        return a != null;
-    }
 
 
 }
