@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.util.AttributeSet;
 import android.util.Log;
 
+import com.github.mikephil.charting.charts.Chart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.XAxis;
@@ -14,6 +15,9 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.dataprovider.LineDataProvider;
 import com.viseator.chartit.BaseView;
 import com.viseator.chartit.data.style.ChartSetStyleEntity;
+import com.viseator.chartit.data.style.ChartStyle;
+import com.viseator.chartit.data.style.ChartStyleEntity;
+import com.viseator.chartit.utils.NullChecker;
 import com.viseator.chartit.utils.axis.XAxisSetter;
 import com.viseator.chartit.utils.axis.YAxisSetter;
 
@@ -25,11 +29,12 @@ import java.util.List;
  * Email: viseator@gmail.com
  */
 
-public class LineChartView extends LineChart implements LineChartContract.View{
+public class LineChartView extends LineChart implements LineChartContract.View {
     private static final String TAG = "@vir LineChartView";
     private LineChartContract.Presenter mPresenter;
     private XAxisSetter mXAxisSetter;
     private YAxisSetter mYAxisSetter;
+
     public LineChartView(Context context) {
         super(context);
     }
@@ -56,7 +61,7 @@ public class LineChartView extends LineChart implements LineChartContract.View{
     public void init(LineData lineData) {
         getAxisRight().setEnabled(false);
         XAxis xAxis = getXAxis();
-        YAxis yAxis  = getAxisLeft();
+        YAxis yAxis = getAxisLeft();
         mXAxisSetter = new XAxisSetter(xAxis);
         mYAxisSetter = new YAxisSetter(yAxis);
         // TODO: 6/1/17 set Axis properties
@@ -67,6 +72,90 @@ public class LineChartView extends LineChart implements LineChartContract.View{
     @Override
     public void showChartSetStylesList(List<ChartSetStyleEntity> list) {
         // TODO: 6/1/17 show chart set styles in a way
+    }
+
+
+    @Override
+    public void setProperties(ChartStyleEntity chartStyle) {
+        if (NullChecker.isSetted(chartStyle.getBackgroundColor())) {
+            super.setBackgroundColor(Color.parseColor(chartStyle.getBackgroundColor()));
+        }
+        if (NullChecker.isSetted(chartStyle.getDescription())) {
+            Description des = new Description();
+            des.setText(chartStyle.getDescription());
+            super.setDescription(des);
+        }
+        if (NullChecker.isSetted(chartStyle.getDrawGrid())) {
+            super.setDrawGridBackground(chartStyle.getDrawGrid());
+        }
+        if (NullChecker.isSetted(chartStyle.getGridColor())) {
+            super.setGridBackgroundColor(Color.parseColor(chartStyle.getGridColor()));
+        }
+        if (NullChecker.isSetted(chartStyle.getBorderColor())) {
+            super.setBorderColor(Color.parseColor(chartStyle.getBorderColor()));
+        }
+        if (NullChecker.isSetted(chartStyle.getBorderWidth())) {
+            super.setBorderWidth(chartStyle.getBorderWidth());
+        }
+        if (NullChecker.isSetted(chartStyle.getMaxVisibleValueCount())) {
+            super.setMaxVisibleValueCount(chartStyle.getMaxVisibleValueCount());
+        }
+        if (NullChecker.isSetted(chartStyle.getEnableXAxis())) {
+            mXAxisSetter.setEnabled(chartStyle.getEnableXAxis());
+        }
+        if (NullChecker.isSetted(chartStyle.getEnableYAxis())) {
+            mYAxisSetter.setEnabled(chartStyle.getEnableYAxis());
+        }
+        if (NullChecker.isSetted(chartStyle.getDrawXAxisLabel())) {
+            mXAxisSetter.setDrawLabels(chartStyle.getDrawXAxisLabel());
+        }
+        if (NullChecker.isSetted(chartStyle.getDrawYAxisLabel())) {
+            mYAxisSetter.setDrawLabels(chartStyle.getDrawYAxisLabel());
+        }
+        if (NullChecker.isSetted(chartStyle.getDrawXAxisLine())) {
+            mXAxisSetter.setDrawAxisLine(chartStyle.getDrawXAxisLine());
+        }
+        if (NullChecker.isSetted(chartStyle.getDrawYAxisLine())) {
+            mYAxisSetter.setDrawAxisLine(chartStyle.getDrawYAxisLine());
+        }
+        if (NullChecker.isSetted(chartStyle.getDrawXAxisGridLines())) {
+            mXAxisSetter.setDrawGridLines(chartStyle.getDrawXAxisGridLines());
+        }
+        if (NullChecker.isSetted(chartStyle.getDrawYAxisGridLines())) {
+            mYAxisSetter.setDrawGridLines(chartStyle.getDrawYAxisGridLines());
+        }
+        if (NullChecker.isSetted(chartStyle.getXAxisGridLineWidth())) {
+            mXAxisSetter.setGridLineWidth(chartStyle.getXAxisGridLineWidth());
+        }
+        if (NullChecker.isSetted(chartStyle.getYAxisGridLineWidth())) {
+            mYAxisSetter.setGridLineWidth(chartStyle.getYAxisGridLineWidth());
+        }
+        if (NullChecker.isSetted(chartStyle.getSetXAxisGridDashLine())) {
+            mXAxisSetter.enableGridDashedLine(chartStyle.getSetXAxisGridDashLine());
+        }
+        if (NullChecker.isSetted(chartStyle.getSetYAxisGridDashLine())) {
+            mYAxisSetter.enableGridDashedLine(chartStyle.getSetYAxisGridDashLine());
+        }
+        if (NullChecker.isSetted(chartStyle.getTextSize())) {
+            mXAxisSetter.setTextSize(chartStyle.getTextSize());
+            mYAxisSetter.setTextSize(chartStyle.getTextSize());
+        }
+        if (NullChecker.isSetted(chartStyle.getXAxisPosition())) {
+            mXAxisSetter.setPosition(chartStyle.getXAxisPosition());
+        }
+        if (NullChecker.isSetted(chartStyle.getXAxisTextColor())) {
+            mXAxisSetter.setTextColor(Color.parseColor(chartStyle.getXAxisTextColor()));
+        }
+        if (NullChecker.isSetted(chartStyle.getYAxisTextColor())) {
+            mYAxisSetter.setTextColor(Color.parseColor(chartStyle.getYAxisTextColor()));
+        }
+        if (NullChecker.isSetted(chartStyle.getDrawZeroLine())) {
+            mYAxisSetter.setDrawZeroLine(chartStyle.getDrawZeroLine());
+        }
+        if (NullChecker.isSetted(chartStyle.getZeroLineColor())) {
+            mYAxisSetter.setZeroLineColor(Color.parseColor(chartStyle.getZeroLineColor()));
+        }
+
     }
 
 

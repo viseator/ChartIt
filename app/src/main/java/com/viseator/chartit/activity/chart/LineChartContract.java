@@ -4,6 +4,8 @@ import com.github.mikephil.charting.data.LineData;
 import com.viseator.chartit.BasePresenter;
 import com.viseator.chartit.BaseView;
 import com.viseator.chartit.data.style.ChartSetStyleEntity;
+import com.viseator.chartit.data.style.ChartStyle;
+import com.viseator.chartit.data.style.ChartStyleEntity;
 
 import java.util.List;
 
@@ -26,6 +28,8 @@ public interface LineChartContract {
         void init(LineData lineData);
 
         void showChartSetStylesList(List<ChartSetStyleEntity> list);
+
+        void setProperties(ChartStyleEntity chartStyle);
     }
 
 }
