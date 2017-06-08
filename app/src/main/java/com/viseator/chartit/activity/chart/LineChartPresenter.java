@@ -5,6 +5,7 @@ import android.graphics.Color;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.viseator.chartit.R;
 import com.viseator.chartit.data.chart.IDataSource;
 import com.viseator.chartit.data.style.ChartSetStyle;
 import com.viseator.chartit.data.style.ChartSetStyleEntity;
@@ -57,12 +58,15 @@ public class LineChartPresenter implements LineChartContract.Presenter {
 
     private void initTestStyle() {
         ChartSetStyleEntity style = new ChartSetStyleEntity();
-        style.setLineWidth(20f);
-        style.setValueTextColor("#ff0000");
+//        style.setLineWidth(20f);
+//        style.setValueTextColor("#ff0000");
+        style.setLineWidth(2f);
+        style.setFillColor("#ff0000");
         mChartSetStyle.removeAllChartSetStyle();
         mChartSetStyle.addChartSetStyleEntity(style);
     }
     public void setDataStyle(int pos, LineDataSet lineDataSet) {
+        lineDataSet.setColor(R.color.chartBlue);
         ChartSetStyleEntity styleEntity = mChartSetStyle.getChartSetStyle(pos);
         if (isSetted(styleEntity.getValueTextColor())) {
             lineDataSet.setValueTextColor(Color.parseColor(styleEntity.getValueTextColor()));

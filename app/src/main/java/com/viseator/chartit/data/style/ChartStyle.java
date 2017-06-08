@@ -31,6 +31,11 @@ public class ChartStyle {
     private static void create(ChartStyleEntityDao chartStyleEntityDao) {
         Log.d(TAG, String.valueOf("Create new chartStyle"));
         ChartStyleEntity chartStyleEntity = new ChartStyleEntity();
+        chartStyleEntity.setXAxisPosition(1);
+        chartStyleEntity.setDrawXAxisGridLines(false);
+        chartStyleEntity.setDrawYAxisGridLines(false);
+        chartStyleEntity.setDrawXAxisLine(false);
+        chartStyleEntity.setDrawYAxisLine(false);
         chartStyleEntityDao.insert(chartStyleEntity);
    }
 }
