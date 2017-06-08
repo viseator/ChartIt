@@ -43,6 +43,10 @@ public class ChartSetStyle {
         }
     }
 
+    public void removeAllChartSetStyle() {
+        mChartSetStyleEntityDao.deleteAll();
+    }
+
     public void updateChartSetStyleEntity(ChartSetStyleEntity chartSetStyleEntity) {
         mChartSetStyleEntityDao.update(chartSetStyleEntity);
     }

@@ -14,6 +14,7 @@ public class ChartStyle {
 
     public static ChartStyleEntity getChartStyleEntity(ChartStyleEntityDao chartStyleEntityDao) {
         if (INSTANCE == null) {
+            chartStyleEntityDao.deleteAll(); // test
             if (chartStyleEntityDao.count() == 0) {
                 Log.d(TAG, String.valueOf("create database"));
                 create(chartStyleEntityDao);
@@ -28,6 +29,7 @@ public class ChartStyle {
     }
 
     private static void create(ChartStyleEntityDao chartStyleEntityDao) {
+        Log.d(TAG, String.valueOf("Create new chartStyle"));
         ChartStyleEntity chartStyleEntity = new ChartStyleEntity();
         chartStyleEntityDao.insert(chartStyleEntity);
    }

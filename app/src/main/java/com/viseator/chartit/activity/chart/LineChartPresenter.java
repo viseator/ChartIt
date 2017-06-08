@@ -8,6 +8,9 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.viseator.chartit.data.chart.IDataSource;
 import com.viseator.chartit.data.style.ChartSetStyle;
 import com.viseator.chartit.data.style.ChartSetStyleEntity;
+import com.viseator.chartit.data.style.ChartStyle;
+import com.viseator.chartit.data.style.ChartStyleEntity;
+import com.viseator.chartit.data.style.ChartStyleEntityDao;
 
 import java.util.List;
 
@@ -24,7 +27,7 @@ public class LineChartPresenter implements LineChartContract.Presenter {
     private IDataSource mChartDataRepo;
     private ChartSetStyle mChartSetStyle;
     private LineData mLineData;
-
+    private ChartStyleEntity mChartStyleEntity;
     private LineChartContract.View mView;
     private int mPos;
 
@@ -34,28 +37,31 @@ public class LineChartPresenter implements LineChartContract.Presenter {
     }
 
     public LineChartPresenter(IDataSource dataSource, LineChartContract.View view, ChartSetStyle
-            chartSetStyle, int pos) {
+            chartSetStyle, ChartStyleEntityDao chartStyleEntityDao, int pos) {
         mChartSetStyle = chartSetStyle;
         mChartDataRepo = dataSource;
         mView = view;
         mPos = pos;
+        mChartStyleEntity = ChartStyle.getChartStyleEntity(chartStyleEntityDao);
     }
 
     public void initView() {
         List<Entry> entries = (List<Entry>) mChartDataRepo.getData(mPos);
         LineDataSet lineDataSet = new LineDataSet(entries, mChartDataRepo.getLabel(mPos));
-        ChartSetStyleEntity style = new ChartSetStyleEntity();
-        //test here
-        style.setLineWidth(20f);
-        style.setValueTextColor("#ff0000");
-        mChartSetStyle.removeChartSetStyleEntity(0);
-        mChartSetStyle.addChartSetStyleEntity(style);
-        //test end here
-        setDataStyle(0,lineDataSet);
+        initTestStyle();
+        setDataStyle(0, lineDataSet);
         mLineData = new LineData(lineDataSet);
         mView.init(mLineData); // TODO: 6/1/17 separate init and set data
+        mView.setProperties(mChartStyleEntity);
     }
 
+    private void initTestStyle() {
+        ChartSetStyleEntity style = new ChartSetStyleEntity();
+        style.setLineWidth(20f);
+        style.setValueTextColor("#ff0000");
+        mChartSetStyle.removeAllChartSetStyle();
+        mChartSetStyle.addChartSetStyleEntity(style);
+    }
     public void setDataStyle(int pos, LineDataSet lineDataSet) {
         ChartSetStyleEntity styleEntity = mChartSetStyle.getChartSetStyle(pos);
         if (isSetted(styleEntity.getValueTextColor())) {
@@ -103,8 +109,6 @@ public class LineChartPresenter implements LineChartContract.Presenter {
         }
 
     }
-
-
 
 
 }
