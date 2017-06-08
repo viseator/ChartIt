@@ -61,7 +61,11 @@ public class LineChartPresenter implements LineChartContract.Presenter {
 //        style.setLineWidth(20f);
 //        style.setValueTextColor("#ff0000");
         style.setLineWidth(2f);
-        style.setFillColor("#ff0000");
+        style.setFillAlpha(50);
+        style.setDrawValues(false);
+        style.setFillColor(R.color.chartBlue);
+        style.setDrawCircles(false);
+        style.setDrawFill(true);
         mChartSetStyle.removeAllChartSetStyle();
         mChartSetStyle.addChartSetStyleEntity(style);
     }
@@ -84,7 +88,7 @@ public class LineChartPresenter implements LineChartContract.Presenter {
             lineDataSet.setHighlightLineWidth(styleEntity.getHighlightLineWidth());
         }
         if (isSetted(styleEntity.getFillColor())) {
-            lineDataSet.setFillColor(Color.parseColor(styleEntity.getFillColor()));
+            lineDataSet.setFillColor(styleEntity.getFillColor());
         }
         if (isSetted(styleEntity.getFillAlpha())) {
             lineDataSet.setFillAlpha(styleEntity.getFillAlpha());
@@ -99,10 +103,13 @@ public class LineChartPresenter implements LineChartContract.Presenter {
             lineDataSet.setDrawCircles(styleEntity.getDrawCircles());
         }
         if (isSetted(styleEntity.getCircleColor())) {
-            lineDataSet.setCircleColor(Color.parseColor(styleEntity.getCircleColor()));
+            lineDataSet.setCircleColor(styleEntity.getCircleColor());
         }
         if (isSetted(styleEntity.getDrawCircleHole())) {
             lineDataSet.setDrawCircleHole(styleEntity.getDrawCircleHole());
+        }
+        if (isSetted(styleEntity.getDrawFill())) {
+            lineDataSet.setDrawFilled(styleEntity.getDrawFill());
         }
         if (isSetted(styleEntity.getEnableDashedLine())) {
             if (styleEntity.getEnableDashedLine()) {
