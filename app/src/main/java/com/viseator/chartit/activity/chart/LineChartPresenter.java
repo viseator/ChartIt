@@ -64,7 +64,9 @@ public class LineChartPresenter implements LineChartContract.Presenter {
         style.setFillAlpha(50);
         style.setDrawValues(false);
         style.setFillColor(R.color.chartBlue);
-        style.setDrawCircles(false);
+        style.setDrawCircleHole(false);
+        style.setCircleColor(R.color.chartBlue);
+        style.setCircleRadius(4f);
         style.setDrawFill(true);
         mChartSetStyle.removeAllChartSetStyle();
         mChartSetStyle.addChartSetStyleEntity(style);

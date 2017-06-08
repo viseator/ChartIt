@@ -1,6 +1,9 @@
 package com.viseator.chartit.data.style;
 
+import android.graphics.Color;
 import android.util.Log;
+
+import com.viseator.chartit.R;
 
 /**
  * Created by viseator on 5/31/17.
@@ -36,6 +39,9 @@ public class ChartStyle {
         chartStyleEntity.setDrawYAxisGridLines(false);
         chartStyleEntity.setDrawXAxisLine(false);
         chartStyleEntity.setDrawYAxisLine(false);
+        chartStyleEntity.setXAxisTextColor(Color.parseColor("#767676"));
+        chartStyleEntity.setYAxisTextColor(Color.parseColor("#767676"));
+        chartStyleEntity.setDrawLegend(false);
         chartStyleEntityDao.insert(chartStyleEntity);
    }
 }

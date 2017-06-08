@@ -144,16 +144,23 @@ public class LineChartView extends LineChart implements LineChartContract.View {
             mXAxisSetter.setPosition(chartStyle.getXAxisPosition());
         }
         if (NullChecker.isSetted(chartStyle.getXAxisTextColor())) {
-            mXAxisSetter.setTextColor(Color.parseColor(chartStyle.getXAxisTextColor()));
+            mXAxisSetter.setTextColor((chartStyle.getXAxisTextColor()));
         }
         if (NullChecker.isSetted(chartStyle.getYAxisTextColor())) {
-            mYAxisSetter.setTextColor(Color.parseColor(chartStyle.getYAxisTextColor()));
+            mYAxisSetter.setTextColor((chartStyle.getYAxisTextColor()));
         }
         if (NullChecker.isSetted(chartStyle.getDrawZeroLine())) {
             mYAxisSetter.setDrawZeroLine(chartStyle.getDrawZeroLine());
         }
         if (NullChecker.isSetted(chartStyle.getZeroLineColor())) {
             mYAxisSetter.setZeroLineColor(Color.parseColor(chartStyle.getZeroLineColor()));
+        }
+        if (NullChecker.isSetted(chartStyle.getDrawLegend())) {
+            if (chartStyle.getDrawLegend()) {
+                super.getLegend().setEnabled(true);
+            } else {
+                super.getLegend().setEnabled(false);
+            }
         }
 
     }
