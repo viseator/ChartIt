@@ -20,6 +20,8 @@ public interface IDataSource {
 
     void removeData(Integer pos);
 
+    void removeAllData();
+
     void updateData(Integer pos, List<? extends Entry> entries, String label);
 
     int count();

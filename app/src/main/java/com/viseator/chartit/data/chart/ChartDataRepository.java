@@ -1,7 +1,6 @@
 package com.viseator.chartit.data.chart;
 
 import com.github.mikephil.charting.data.Entry;
-import com.viseator.chartit.data.style.ChartStyleEntity;
 
 import java.util.List;
 
@@ -58,6 +57,11 @@ public class ChartDataRepository implements IDataSource {
     @Override
     public void removeData(Integer pos) {
         mLocalChartData.removeData(pos);
+    }
+
+    @Override
+    public void removeAllData() {
+        mLocalChartData.removeAllData();
     }
 
 }

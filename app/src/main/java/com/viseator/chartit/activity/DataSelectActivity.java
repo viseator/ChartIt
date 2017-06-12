@@ -39,6 +39,7 @@ public class DataSelectActivity extends BaseActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mChartDataRepository.removeAllData();
         for(int i = 0;i < 10;i++) {
             test();
         }
@@ -51,7 +52,6 @@ public class DataSelectActivity extends BaseActivity {
         }
         Collections.sort(list,new EntryXComparator());
         mChartDataRepository.addData(list, "label");
-
     }
     @Override
     protected int getLayout() {

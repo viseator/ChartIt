@@ -90,6 +90,11 @@ public class LocalChartData implements IDataSource {
     }
 
     @Override
+    public void removeAllData() {
+        mChartDataEntityDao.deleteAll();
+    }
+
+    @Override
     public void updateData(Integer pos, List<? extends Entry> entries, String label) {
         ChartDataEntity data = getChartDataEntityByPos(pos);
         if (data == null) {
