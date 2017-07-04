@@ -12,6 +12,8 @@ import java.util.List;
  */
 
 public class ChartSetStyle {
+    public static final int MODE_LINEAR = 0x1;
+    public static final int MODE_CUBIC = 0x2;
 
     private ChartSetStyleEntityDao mChartSetStyleEntityDao;
 

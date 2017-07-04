@@ -46,7 +46,7 @@ public class DataSelectActivity extends BaseActivity {
     }
     private void test() {
         List<Entry> list = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 10; i++) {
             Entry entry = new Entry(((float) Math.random()), ((float) Math.random()));
             list.add(entry);
         }

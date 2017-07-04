@@ -17,6 +17,7 @@ public class ChartSetStyleEntity {
     private int position;
 
 
+    private int mode;
     private String valueTextColor;
     private float valueTextSize;
 
@@ -37,15 +38,16 @@ public class ChartSetStyleEntity {
     private float barSpacePercent;
     private String barShadowColor;
     private Boolean drawFill;
-    @Generated(hash = 892539679)
-    public ChartSetStyleEntity(Long id, int position, String valueTextColor,
-            float valueTextSize, Boolean drawValues, String highlightColor,
-            float highlightLineWidth, int fillColor, int fillAlpha, float lineWidth,
-            float circleRadius, Boolean drawCircles, int circleColor,
-            Boolean drawCircleHole, Boolean enableDashedLine, float barSpacePercent,
-            String barShadowColor, Boolean drawFill) {
+    @Generated(hash = 1477256445)
+    public ChartSetStyleEntity(Long id, int position, int mode,
+            String valueTextColor, float valueTextSize, Boolean drawValues,
+            String highlightColor, float highlightLineWidth, int fillColor,
+            int fillAlpha, float lineWidth, float circleRadius, Boolean drawCircles,
+            int circleColor, Boolean drawCircleHole, Boolean enableDashedLine,
+            float barSpacePercent, String barShadowColor, Boolean drawFill) {
         this.id = id;
         this.position = position;
+        this.mode = mode;
         this.valueTextColor = valueTextColor;
         this.valueTextSize = valueTextSize;
         this.drawValues = drawValues;
@@ -173,6 +175,12 @@ public class ChartSetStyleEntity {
     }
     public void setDrawFill(Boolean drawFill) {
         this.drawFill = drawFill;
+    }
+    public int getMode() {
+        return this.mode;
+    }
+    public void setMode(int mode) {
+        this.mode = mode;
     }
 }
 

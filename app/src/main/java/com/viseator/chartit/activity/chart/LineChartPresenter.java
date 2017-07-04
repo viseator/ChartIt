@@ -61,20 +61,31 @@ public class LineChartPresenter implements LineChartContract.Presenter {
 //        style.setLineWidth(20f);
 //        style.setValueTextColor("#ff0000");
         style.setLineWidth(2f);
-        style.setFillAlpha(255); // FIXME: 6/9/17 mpchart
+        style.setFillAlpha(100); // FIXME: 6/9/17 mpchart
         style.setDrawValues(false);
         style.setFillColor(R.color.chartBlue);
+
         style.setDrawCircleHole(false);
         style.setCircleColor(R.color.chartBlue);
         style.setCircleRadius(4f);
         style.setDrawFill(true);
+        style.setMode(ChartSetStyle.MODE_CUBIC);
         mChartSetStyle.removeAllChartSetStyle();
         mChartSetStyle.addChartSetStyleEntity(style);
     }
     public void setDataStyle(int pos, LineDataSet lineDataSet) {
-        lineDataSet.setMode(LineDataSet.Mode.CUBIC_BEZIER); // FIXME: 6/9/17 mpchart
+//        lineDataSet.setMode(LineDataSet.Mode.CUBIC_BEZIER); // FIXME: 6/9/17 mpchart
         lineDataSet.setColor(R.color.chartBlue);
         ChartSetStyleEntity styleEntity = mChartSetStyle.getChartSetStyle(pos);
+        if (isSetted(styleEntity.getMode())) {
+            switch (styleEntity.getMode()) {
+                case ChartSetStyle.MODE_CUBIC:
+                    lineDataSet.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+                    break;
+                case ChartSetStyle.MODE_LINEAR:
+                    lineDataSet.setMode(LineDataSet.Mode.LINEAR);
+            }
+        }
         if (isSetted(styleEntity.getValueTextColor())) {
             lineDataSet.setValueTextColor(Color.parseColor(styleEntity.getValueTextColor()));
         }
