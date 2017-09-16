@@ -3,6 +3,8 @@ package com.viseator.chartit.data.chart.local;
 import android.util.Log;
 
 import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.viseator.chartit.R;
 import com.viseator.chartit.data.chart.ChartDataEntity;
 import com.viseator.chartit.data.chart.ChartDataEntityDao;
 import com.viseator.chartit.data.chart.IDataSource;
@@ -65,7 +67,7 @@ public class LocalChartData implements IDataSource {
     @Override
     public void addData(List<? extends Entry> entries, String label) {
         ChartDataEntity chartDataEntity = new ChartDataEntity();
-        setEntityByEntries(chartDataEntity,entries);
+        setEntityByEntries(chartDataEntity, entries);
         chartDataEntity.setLabel(label);
         chartDataEntity.setTime(System.currentTimeMillis());
         chartDataEntity.setPos(count());
@@ -100,7 +102,7 @@ public class LocalChartData implements IDataSource {
         if (data == null) {
             return;
         }
-        setEntityByEntries(data,entries);
+        setEntityByEntries(data, entries);
         data.setLabel(label);
     }
 
@@ -108,12 +110,13 @@ public class LocalChartData implements IDataSource {
         List<ChartDataEntity> list = mChartDataEntityDao.queryBuilder()
                 .where(ChartDataEntityDao.Properties.Pos.eq(pos)).list();
         if (list.size() < 1) {
-            Log.e(TAG, "did not find data! Pos :" +String.valueOf(pos));
+            Log.e(TAG, "did not find data! Pos :" + String.valueOf(pos));
             return null;
         }
         return list.get(0);
 
     }
+
 
     private void setEntityByEntries(ChartDataEntity entity, List<? extends Entry> entries) {
         List<Float> mainValues = new ArrayList<>();
