@@ -17,6 +17,7 @@ import com.viseator.chartit.BaseView;
 import com.viseator.chartit.data.style.ChartSetStyleEntity;
 import com.viseator.chartit.data.style.ChartStyle;
 import com.viseator.chartit.data.style.ChartStyleEntity;
+import com.viseator.chartit.listener.LineChartTouchListener;
 import com.viseator.chartit.utils.NullChecker;
 import com.viseator.chartit.utils.axis.XAxisSetter;
 import com.viseator.chartit.utils.axis.YAxisSetter;
@@ -67,6 +68,8 @@ public class LineChartView extends LineChart implements LineChartContract.View {
         // TODO: 6/1/17 set Axis properties
         super.setData(lineData);
         super.setDescription(null);
+        super.setOnTouchListener(new LineChartTouchListener(this, mViewPortHandler.getMatrixTouch
+                (), 3f));
     }
 
     @Override
