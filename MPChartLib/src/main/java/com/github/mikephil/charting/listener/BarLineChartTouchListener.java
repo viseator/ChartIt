@@ -38,7 +38,7 @@ public class BarLineChartTouchListener extends ChartTouchListener<BarLineChartBa
     /**
      * matrix for saving the original matrix state
      */
-    private Matrix mSavedMatrix = new Matrix();
+    protected Matrix mSavedMatrix = new Matrix();
 
     /**
      * point where the touch action started
@@ -528,7 +528,7 @@ public class BarLineChartTouchListener extends ChartTouchListener<BarLineChartBa
      *
      * @return
      */
-    private boolean inverted() {
+    protected boolean inverted() {
         return (mClosestDataSetToTouch == null && mChart.isAnyAxisInverted()) ||
                 (mClosestDataSetToTouch != null
                 && mChart.isInverted(mClosestDataSetToTouch.getAxisDependency()));

@@ -70,6 +70,8 @@ public class LineChartView extends LineChart implements LineChartContract.View {
         super.setDescription(null);
         super.setOnTouchListener(new LineChartTouchListener(this, mViewPortHandler.getMatrixTouch
                 (), 3f));
+        super.setDragEnabled(true);
+        super.setDoubleTapToZoomEnabled(false);
     }
 
     @Override
