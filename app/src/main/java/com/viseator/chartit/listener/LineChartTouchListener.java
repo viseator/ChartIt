@@ -9,6 +9,7 @@ import android.view.animation.AnimationUtils;
 
 import com.github.mikephil.charting.charts.BarLineChartBase;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarLineScatterCandleBubbleData;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.interfaces.datasets.IBarLineScatterCandleBubbleDataSet;
@@ -228,37 +229,15 @@ public class LineChartTouchListener extends BarLineChartTouchListener {
 
     @Override
     public boolean onDoubleTap(MotionEvent e) {
-
         mLastGesture = ChartGesture.DOUBLE_TAP;
-
-//        OnChartGestureListener l = mChart.getOnChartGestureListener();
-//
-//        if (l != null) {
-//            l.onChartDoubleTapped(e);
-//        }
-
-        // check if double-tap zooming is enabled
-/*
-        if (mChart.isDoubleTapToZoomEnabled() && mChart.getData().getEntryCount() > 0) {
-
-            MPPointF trans = getTrans(e.getX(), e.getY());
-
-            mChart.zoom(mChart.isScaleXEnabled() ? 1.4f : 1f, mChart.isScaleYEnabled() ? 1.4f :
-                    1f, trans.x, trans.y);
-
-            if (mChart.isLogEnabled())
-                Log.i("BarlineChartTouch", "Double-Tap, Zooming In, x: " + trans.x + ", y: "
-                        + trans.y);
-
-            MPPointF.recycleInstance(trans);
-        }
-*/
-
         mTouchingEntry = mChart.getEntryByTouchPoint(e.getX(), e.getY());
         if (mTouchingEntry != null) {
             Log.d(TAG, mTouchingEntry.toString());
         }
-
+//        Log.d(TAG, String.valueOf(mChart.getYChartMax()) + String.valueOf(mChart.getYChartMin()));
+//        Log.d(TAG, String.valueOf(mChart.getViewPortHandler().getScaleY()));
+//        Log.d(TAG, String.valueOf(mChart.getViewPortHandler().getChartHeight()));
+//        Log.d(TAG, String.valueOf(mChart.getYChartMax() - mChart.getYChartMin()));
         return false;
     }
 
@@ -283,9 +262,16 @@ public class LineChartTouchListener extends BarLineChartTouchListener {
         }
 
 
-        Log.d(TAG, String.valueOf(dX) + String.valueOf(dY));
+//        Log.d(TAG, String.valueOf(dX) + String.valueOf(dY));
+        Log.d(TAG, String.valueOf(getValueDelta(dY)));
         if (l != null)
             l.onChartTranslate(event, dX, dY);
     }
+
+    private float getValueDelta(float dY) {
+        return -dY / mChart.getViewPortHandler().getContentRect().height() / mChart.getViewPortHandler()
+                .getScaleY() * (mChart.getYChartMax() - mChart.getYChartMin());
+    }
 }
+
 
