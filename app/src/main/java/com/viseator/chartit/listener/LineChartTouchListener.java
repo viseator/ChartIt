@@ -9,13 +9,11 @@ import android.view.animation.AnimationUtils;
 
 import com.github.mikephil.charting.charts.BarLineChartBase;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
-import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarLineScatterCandleBubbleData;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.interfaces.datasets.IBarLineScatterCandleBubbleDataSet;
 import com.github.mikephil.charting.listener.BarLineChartTouchListener;
 import com.github.mikephil.charting.listener.OnChartGestureListener;
-import com.github.mikephil.charting.utils.MPPointF;
 import com.github.mikephil.charting.utils.Utils;
 
 /**
@@ -27,6 +25,7 @@ import com.github.mikephil.charting.utils.Utils;
 public class LineChartTouchListener extends BarLineChartTouchListener {
 
     private Entry mTouchingEntry;
+    private float mSaveY;
 
     private static final String TAG = "@vir TouchListener";
 
@@ -157,6 +156,7 @@ public class LineChartTouchListener extends BarLineChartTouchListener {
 
             case MotionEvent.ACTION_UP:
 
+                mTouchingEntry = null;
                 final VelocityTracker velocityTracker = mVelocityTracker;
                 final int pointerId = event.getPointerId(0);
                 velocityTracker.computeCurrentVelocity(1000, Utils.getMaximumFlingVelocity());
@@ -231,6 +231,7 @@ public class LineChartTouchListener extends BarLineChartTouchListener {
     public boolean onDoubleTap(MotionEvent e) {
         mLastGesture = ChartGesture.DOUBLE_TAP;
         mTouchingEntry = mChart.getEntryByTouchPoint(e.getX(), e.getY());
+        mSaveY = mTouchingEntry.getY();
         if (mTouchingEntry != null) {
             Log.d(TAG, mTouchingEntry.toString());
         }
@@ -264,12 +265,17 @@ public class LineChartTouchListener extends BarLineChartTouchListener {
 
 //        Log.d(TAG, String.valueOf(dX) + String.valueOf(dY));
         Log.d(TAG, String.valueOf(getValueDelta(dY)));
+        if (mTouchingEntry != null) {
+            mTouchingEntry.setY(mSaveY + getValueDelta(dY));
+        }
+        mChart.notifyDataSetChanged();
         if (l != null)
             l.onChartTranslate(event, dX, dY);
     }
 
     private float getValueDelta(float dY) {
-        return -dY / mChart.getViewPortHandler().getContentRect().height() / mChart.getViewPortHandler()
+        return -dY / mChart.getViewPortHandler().getContentRect().height() / mChart
+                .getViewPortHandler()
                 .getScaleY() * (mChart.getYChartMax() - mChart.getYChartMin());
     }
 }

@@ -1,5 +1,6 @@
 package com.viseator.chartit.activity.chart;
 
+import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.viseator.chartit.BasePresenter;
 import com.viseator.chartit.BaseView;
@@ -20,6 +21,8 @@ public interface LineChartContract {
         void initView();
 
         void showAllChartSetStyles();
+
+        void updateData(List<? extends Entry> entries);
     }
 
     interface View extends BaseView<Presenter> {
@@ -30,6 +33,7 @@ public interface LineChartContract {
         void showChartSetStylesList(List<ChartSetStyleEntity> list);
 
         void setProperties(ChartStyleEntity chartStyle);
+
     }
 
 }

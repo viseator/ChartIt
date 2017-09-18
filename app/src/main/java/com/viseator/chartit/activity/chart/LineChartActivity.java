@@ -2,12 +2,16 @@ package com.viseator.chartit.activity.chart;
 
 import android.os.Bundle;
 
+import com.github.mikephil.charting.data.Entry;
 import com.viseator.chartit.BaseActivity;
 import com.viseator.chartit.R;
 import com.viseator.chartit.data.chart.ChartDataRepository;
 import com.viseator.chartit.data.chart.local.LocalChartData;
 import com.viseator.chartit.data.style.ChartSetStyle;
 import com.viseator.chartit.data.style.ChartStyle;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -41,5 +45,15 @@ public class LineChartActivity extends BaseActivity {
     @Override
     protected void initView() {
         mPresenter.initView();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        List<Entry> entries = new ArrayList<>();
+        for(int i = 0; i < mLineChartView.getData().getDataSetByIndex(0).getEntryCount(); i++){
+            entries.add(mLineChartView.getData().getDataSetByIndex(0).getEntryForIndex(i));
+        }
+        mPresenter.updateData(entries);
     }
 }

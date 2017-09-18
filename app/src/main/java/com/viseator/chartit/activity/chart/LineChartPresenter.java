@@ -37,6 +37,11 @@ public class LineChartPresenter implements LineChartContract.Presenter {
         mView.showChartSetStylesList(list);
     }
 
+    @Override
+    public void updateData(List<? extends Entry> entries) {
+        mChartDataRepo.updateData(mPos, entries, mChartDataRepo.getLabel(0));
+    }
+
     public LineChartPresenter(IDataSource dataSource, LineChartContract.View view, ChartSetStyle
             chartSetStyle, ChartStyleEntityDao chartStyleEntityDao, int pos) {
         mChartSetStyle = chartSetStyle;
@@ -73,6 +78,7 @@ public class LineChartPresenter implements LineChartContract.Presenter {
         mChartSetStyle.removeAllChartSetStyle();
         mChartSetStyle.addChartSetStyleEntity(style);
     }
+
     public void setDataStyle(int pos, LineDataSet lineDataSet) {
 //        lineDataSet.setMode(LineDataSet.Mode.CUBIC_BEZIER); // FIXME: 6/9/17 mpchart
         lineDataSet.setColor(R.color.chartBlue);
