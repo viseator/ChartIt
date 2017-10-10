@@ -362,7 +362,7 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleBubbleData<
     }
 
     @Override
-    protected void calcMinMax() {
+    public void calcMinMax() {
 
         mXAxis.calculate(mData.getXMin(), mData.getXMax());
 

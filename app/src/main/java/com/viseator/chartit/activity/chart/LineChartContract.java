@@ -2,6 +2,7 @@ package com.viseator.chartit.activity.chart;
 
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.viseator.chartit.BasePresenter;
 import com.viseator.chartit.BaseView;
 import com.viseator.chartit.data.style.ChartSetStyleEntity;
@@ -34,6 +35,7 @@ public interface LineChartContract {
 
         void setProperties(ChartStyleEntity chartStyle);
 
+        void setXFormatter(IAxisValueFormatter formatter);
     }
 
 }

@@ -12,6 +12,7 @@ import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.dataprovider.LineDataProvider;
 import com.viseator.chartit.BaseView;
 import com.viseator.chartit.data.style.ChartSetStyleEntity;
@@ -72,6 +73,8 @@ public class LineChartView extends LineChart implements LineChartContract.View {
                 (), 3f));
         super.setDragEnabled(true);
         super.setDoubleTapToZoomEnabled(false);
+        super.setHighlightPerTapEnabled(false);
+        super.setHighlightPerDragEnabled(false);
     }
 
     @Override
@@ -168,6 +171,12 @@ public class LineChartView extends LineChart implements LineChartContract.View {
             }
         }
 
+    }
+
+    @Override
+    public void setXFormatter(IAxisValueFormatter formatter) {
+        mXAxisSetter.setFormatter(formatter);
+        mXAxisSetter.setLabelCount(getData().getEntryCount() - 1);
     }
 
 

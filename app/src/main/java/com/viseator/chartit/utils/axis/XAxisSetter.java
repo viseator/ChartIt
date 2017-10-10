@@ -1,6 +1,7 @@
 package com.viseator.chartit.utils.axis;
 
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 
 /**
  * Created by viseator on 5/31/17.
@@ -96,5 +97,15 @@ public class XAxisSetter implements IXAxisSetter {
             default:
                 break;
         }
+    }
+
+    @Override
+    public void setFormatter(IAxisValueFormatter formatter) {
+        mXAxis.setValueFormatter(formatter);
+    }
+
+    @Override
+    public void setLabelCount(int num) {
+        mXAxis.setLabelCount(num);
     }
 }

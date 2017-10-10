@@ -283,25 +283,30 @@ public class LineChartTouchListener extends BarLineChartTouchListener {
             // if the point we touched at the top 20% of screen
             if (factor < 0.2) {
                 // if not reached the max of Y
+                float scrollSpeed = 0.001f + ((0.2f - factor) / 0.2f) * 0.01f;
                 if (mViewPortHandler.getTransY() + mContentHeight < mViewPortHandler.getScaleY() *
                         mContentHeight) {
-                    float scrollSpeed = 0.001f + ((0.2f - factor) / 0.2f) * 0.01f;
                     mTouchingEntry.setY(mTouchingEntry.getY() + mChartYValueRange * scrollSpeed);
                     mSaveY = mSaveY + mChartYValueRange * scrollSpeed;
                     mChart.centerViewToY(mTouchingEntry.getY() - Math.abs(getValueDelta
                             (mContentHeight / 2 - event.getY())), mChart.getAxisLeft()
                             .getAxisDependency());
+                } else {
+                    // reached the max of Y
+                    // TODO: 10/10/17 extend the Y axis
                 }
-                // if the point we touched at the bottom 20% of screen
             } else if (factor > 0.8) {
-                // if not reached the bottom of Y
+                // if the point we touched at the bottom 20% of screen
+                float scrollSpeed = 0.001f + ((factor - 0.8f) / 0.2f) * 0.01f;
                 if (mViewPortHandler.getTransY() > 0) {
-                    float scrollSpeed = 0.001f + ((factor - 0.8f) / 0.2f) * 0.01f;
+                    // if not reached the bottom of Y
                     mTouchingEntry.setY(mTouchingEntry.getY() - mChartYValueRange * scrollSpeed);
                     mSaveY = mSaveY - mChartYValueRange * scrollSpeed;
                     mChart.centerViewToY(mTouchingEntry.getY() + (getValueDelta
                             (mContentHeight / 2 - event.getY())), mChart.getAxisLeft()
                             .getAxisDependency());
+                } else {
+                    // TODO: 10/10/17 extend the Y axis
                 }
             }
             mChart.notifyDataSetChanged();
@@ -310,6 +315,12 @@ public class LineChartTouchListener extends BarLineChartTouchListener {
             l.onChartTranslate(event, dX, dY);
     }
 
+    /**
+     * Map the dY to the delta of value in Y value
+     *
+     * @param dY
+     * @return the mapped value
+     */
     private float getValueDelta(float dY) {
         return -dY / mContentHeight / mViewPortHandler.getScaleY() * mChartYValueRange;
     }

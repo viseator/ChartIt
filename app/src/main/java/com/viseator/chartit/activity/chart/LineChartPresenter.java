@@ -6,6 +6,7 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.viseator.chartit.R;
+import com.viseator.chartit.adapter.XAxisFormatter;
 import com.viseator.chartit.data.chart.IDataSource;
 import com.viseator.chartit.data.style.ChartSetStyle;
 import com.viseator.chartit.data.style.ChartSetStyleEntity;
@@ -13,6 +14,8 @@ import com.viseator.chartit.data.style.ChartStyle;
 import com.viseator.chartit.data.style.ChartStyleEntity;
 import com.viseator.chartit.data.style.ChartStyleEntityDao;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import static com.viseator.chartit.utils.NullChecker.isSetted;
@@ -59,6 +62,11 @@ public class LineChartPresenter implements LineChartContract.Presenter {
         mLineData = new LineData(lineDataSet);
         mView.init(mLineData); // TODO: 6/1/17 separate init and set data
         mView.setProperties(mChartStyleEntity);
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            list.add(String.valueOf(i) + "t");
+        }
+        mView.setXFormatter(new XAxisFormatter(list));
     }
 
     private void initTestStyle() {
@@ -74,7 +82,7 @@ public class LineChartPresenter implements LineChartContract.Presenter {
         style.setCircleColor(R.color.chartBlue);
         style.setCircleRadius(4f);
         style.setDrawFill(true);
-        style.setMode(ChartSetStyle.MODE_CUBIC);
+        style.setMode(ChartSetStyle.MODE_LINEAR);
         mChartSetStyle.removeAllChartSetStyle();
         mChartSetStyle.addChartSetStyleEntity(style);
     }

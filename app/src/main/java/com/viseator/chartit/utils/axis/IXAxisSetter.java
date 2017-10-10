@@ -1,5 +1,7 @@
 package com.viseator.chartit.utils.axis;
 
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+
 /**
  * Created by viseator on 5/31/17.
  * Wu Di
@@ -8,4 +10,6 @@ package com.viseator.chartit.utils.axis;
 
 public interface IXAxisSetter extends IAxisSetter {
     void setPosition(int position);
+    void setFormatter(IAxisValueFormatter formatter);
+    void setLabelCount(int num);
 }
