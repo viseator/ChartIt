@@ -122,6 +122,7 @@ public class LineChartTouchListener extends BarLineChartTouchListener {
             case MotionEvent.ACTION_MOVE:
 
                 if (mTouchMode == VALUE_DRAG) {
+                    // in the mode which can modify data by drag
                     performValueDrag(event);
                 } else if (mTouchMode == DRAG) {
 
@@ -247,6 +248,11 @@ public class LineChartTouchListener extends BarLineChartTouchListener {
         return false;
     }
 
+    /**
+     * Perform the drag by motion event
+     *
+     * @param event
+     */
     private void performValueDrag(MotionEvent event) {
         mLastGesture = ChartGesture.VALUE_DRAG;
         OnChartGestureListener l = mChart.getOnChartGestureListener();
@@ -270,9 +276,13 @@ public class LineChartTouchListener extends BarLineChartTouchListener {
 //        Log.d(TAG, String.valueOf(mViewPortHandler.getTransY()));
 //        Log.d(TAG, String.valueOf(mViewPortHandler.getScaleY() * mContentHeight));
         if (mTouchingEntry != null) {
+            // update the value of the touching entry
             mTouchingEntry.setY(mSaveY + getValueDelta(dY));
+            // the factor of the point we touched on the screen
             float factor = (event.getY() - mChart.getY()) / mContentHeight;
+            // if the point we touched at the top 20% of screen
             if (factor < 0.2) {
+                // if not reached the max of Y
                 if (mViewPortHandler.getTransY() + mContentHeight < mViewPortHandler.getScaleY() *
                         mContentHeight) {
                     float scrollSpeed = 0.001f + ((0.2f - factor) / 0.2f) * 0.01f;
@@ -282,8 +292,9 @@ public class LineChartTouchListener extends BarLineChartTouchListener {
                             (mContentHeight / 2 - event.getY())), mChart.getAxisLeft()
                             .getAxisDependency());
                 }
-            }else if(factor > 0.8){
-
+                // if the point we touched at the bottom 20% of screen
+            } else if (factor > 0.8) {
+                // if not reached the bottom of Y
                 if (mViewPortHandler.getTransY() > 0) {
                     float scrollSpeed = 0.001f + ((factor - 0.8f) / 0.2f) * 0.01f;
                     mTouchingEntry.setY(mTouchingEntry.getY() - mChartYValueRange * scrollSpeed);
