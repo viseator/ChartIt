@@ -12,4 +12,5 @@ public interface IXAxisSetter extends IAxisSetter {
     void setPosition(int position);
     void setFormatter(IAxisValueFormatter formatter);
     void setLabelCount(int num);
+    void cancelFormatter();
 }

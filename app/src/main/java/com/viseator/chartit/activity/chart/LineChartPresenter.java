@@ -15,7 +15,6 @@ import com.viseator.chartit.data.style.ChartStyleEntity;
 import com.viseator.chartit.data.style.ChartStyleEntityDao;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import static com.viseator.chartit.utils.NullChecker.isSetted;
@@ -55,18 +54,28 @@ public class LineChartPresenter implements LineChartContract.Presenter {
     }
 
     public void initView() {
-        List<Entry> entries = (List<Entry>) mChartDataRepo.getData(mPos);
-        LineDataSet lineDataSet = new LineDataSet(entries, mChartDataRepo.getLabel(mPos));
         initTestStyle();
+        mView.initChart(); // TODO: 6/1/17 separate initChart and set data
+        setViewData(mPos);
+        mView.setOnTouchListener();
+        mView.setProperties(mChartStyleEntity);
+    }
+
+    private void setViewData(int pos) {
+        List<Entry> entries = (ArrayList<Entry>) mChartDataRepo.getData(pos);
+        LineDataSet lineDataSet = new LineDataSet(entries, mChartDataRepo.getLabel(mPos));
         setDataStyle(0, lineDataSet);
         mLineData = new LineData(lineDataSet);
-        mView.init(mLineData); // TODO: 6/1/17 separate init and set data
-        mView.setProperties(mChartStyleEntity);
-        List<String> list = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            list.add(String.valueOf(i) + "t");
+        mView.setData(mLineData);
+        if (entries.get(0).getData() == null) {
+            mView.cancelFormatter();
+        } else {
+            List<String> formatterString = new ArrayList<>(entries.size());
+            for (Entry e : entries) {
+                formatterString.add((String) e.getData());
+            }
+            mView.setXFormatter(new XAxisFormatter(formatterString));
         }
-        mView.setXFormatter(new XAxisFormatter(list));
     }
 
     private void initTestStyle() {

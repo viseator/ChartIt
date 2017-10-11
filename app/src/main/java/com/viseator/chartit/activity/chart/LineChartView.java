@@ -60,17 +60,14 @@ public class LineChartView extends LineChart implements LineChartContract.View {
     }
 
     @Override
-    public void init(LineData lineData) {
+    public void initChart() {
         getAxisRight().setEnabled(false);
         XAxis xAxis = getXAxis();
         YAxis yAxis = getAxisLeft();
         mXAxisSetter = new XAxisSetter(xAxis);
         mYAxisSetter = new YAxisSetter(yAxis);
         // TODO: 6/1/17 set Axis properties
-        super.setData(lineData);
         super.setDescription(null);
-        super.setOnTouchListener(new LineChartTouchListener(this, mViewPortHandler.getMatrixTouch
-                (), 3f));
         super.setDragEnabled(true);
         super.setDoubleTapToZoomEnabled(false);
         super.setHighlightPerTapEnabled(false);
@@ -82,6 +79,11 @@ public class LineChartView extends LineChart implements LineChartContract.View {
         // TODO: 6/1/17 show chart set styles in a way
     }
 
+    @Override
+    public void setOnTouchListener(){
+        super.setOnTouchListener(new LineChartTouchListener(this, mViewPortHandler.getMatrixTouch
+                (), 3f));
+    }
 
     @Override
     public void setProperties(ChartStyleEntity chartStyle) {
@@ -177,6 +179,11 @@ public class LineChartView extends LineChart implements LineChartContract.View {
     public void setXFormatter(IAxisValueFormatter formatter) {
         mXAxisSetter.setFormatter(formatter);
         mXAxisSetter.setLabelCount(getData().getEntryCount() - 1);
+    }
+
+    @Override
+    public void cancelFormatter() {
+        mXAxisSetter.cancelFormatter();
     }
 
 

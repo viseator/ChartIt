@@ -108,4 +108,10 @@ public class XAxisSetter implements IXAxisSetter {
     public void setLabelCount(int num) {
         mXAxis.setLabelCount(num);
     }
+
+    @Override
+    public void cancelFormatter() {
+        mXAxis.setValueFormatter(null);
+        setLabelCount(6);
+    }
 }

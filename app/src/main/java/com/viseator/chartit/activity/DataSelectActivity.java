@@ -40,19 +40,22 @@ public class DataSelectActivity extends BaseActivity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mChartDataRepository.removeAllData();
-        for(int i = 0;i < 10;i++) {
+        for (int i = 0; i < 10; i++) {
             test();
         }
     }
+
     private void test() {
         List<Entry> list = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             Entry entry = new Entry(i, ((float) Math.random()));
+            entry.setData(String.valueOf(i) + "t");
             list.add(entry);
         }
-        Collections.sort(list,new EntryXComparator());
+        Collections.sort(list, new EntryXComparator());
         mChartDataRepository.addData(list, "label");
     }
+
     @Override
     protected int getLayout() {
         return R.layout.activity_data_selecte;

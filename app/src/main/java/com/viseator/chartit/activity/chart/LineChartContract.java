@@ -29,13 +29,17 @@ public interface LineChartContract {
     interface View extends BaseView<Presenter> {
         void setData(LineData lineData);
 
-        void init(LineData lineData);
+        void initChart();
 
         void showChartSetStylesList(List<ChartSetStyleEntity> list);
 
         void setProperties(ChartStyleEntity chartStyle);
 
         void setXFormatter(IAxisValueFormatter formatter);
+
+        void cancelFormatter();
+
+        void setOnTouchListener();
     }
 
 }

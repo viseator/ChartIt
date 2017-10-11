@@ -25,5 +25,4 @@ public interface IDataSource {
     void updateData(Integer pos, List<? extends Entry> entries, String label);
 
     int count();
-
 }

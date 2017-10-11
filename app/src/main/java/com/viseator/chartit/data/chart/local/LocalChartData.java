@@ -79,6 +79,7 @@ public class LocalChartData implements IDataSource {
         return ((int) mChartDataEntityDao.count());
     }
 
+
     @Override
     public void removeData(Integer pos) {
         mChartDataEntityDao.delete(getChartDataEntityByPos(pos));
@@ -133,7 +134,12 @@ public class LocalChartData implements IDataSource {
         entity.setMainValue(DataCoverter.floatsToString(mainValues));
         entity.setMapValue(DataCoverter.floatsToString(mapValues));
         if (aliases.size() > 0) {
+            // strings
+            entity.setType(1);
             entity.setAlias(DataCoverter.stringListToString(aliases));
+        } else {
+            // floats
+            entity.setType(0);
         }
 
     }

@@ -19,6 +19,7 @@ public class ChartDataRepository implements IDataSource {
         return mLocalChartData.count();
     }
 
+
     public static ChartDataRepository getInstance() {
         return INSTANCE;
     }
@@ -63,5 +64,6 @@ public class ChartDataRepository implements IDataSource {
     public void removeAllData() {
         mLocalChartData.removeAllData();
     }
+
 
 }
