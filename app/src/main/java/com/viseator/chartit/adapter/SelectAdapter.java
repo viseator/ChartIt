@@ -46,12 +46,13 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         public ViewHolder(View itemView) {
             super(itemView);
             this.itemView = itemView;
-            ButterKnife.bind(this,itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
 
     public SelectAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(mContext).inflate(R.layout.data_recyclerview_content, parent, false);
+        View v = LayoutInflater.from(mContext).inflate(R.layout.data_recyclerview_content,
+                parent, false);
         return new ViewHolder(v);
     }
 
@@ -60,7 +61,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext,LineChartActivity.class);
+                Intent intent = new Intent(mContext, LineChartActivity.class);
                 intent.putExtra("position", position);
                 mContext.startActivity(intent);
             }
