@@ -1,11 +1,13 @@
 package com.viseator.chartit.activity;
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.RelativeLayout;
 
 import com.viseator.chartit.BaseActivity;
 import com.viseator.chartit.R;
+import com.viseator.chartit.adapter.DataAddAdapter;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -15,6 +17,7 @@ public class DataAddActivity extends BaseActivity {
     @BindView(R.id.data_add_recyclerview)
     RecyclerView mRecyclerView;
 
+    private DataAddAdapter mDataAddAdapter;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +35,10 @@ public class DataAddActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        mDataAddAdapter = new DataAddAdapter(this);
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setAdapter(mDataAddAdapter);
     }
 
 

@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">ChartIt</string>
     <string name="generate_chart">生成图表</string>
+    <string name="x_hint">请输入x值（字符或数字）</string>
+    <string name="x">x</string>
+    <string name="y">y</string>
+    <string name="not_float">Y值应为数值</string>
 </resources>

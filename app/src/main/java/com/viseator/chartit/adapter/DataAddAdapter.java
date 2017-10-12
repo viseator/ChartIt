@@ -7,8 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.viseator.chartit.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,10 +28,17 @@ public class DataAddAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public static final int TYPE_MAIN = 0x1;
     public static final int TYPE_BUTTON = 0x2;
     private int mItemIndex = 0;
+    private int mLastIndex = -1;
     private Context mContext;
+    private EditText mLastXEditText;
+    private EditText mLastYEditText;
+    private List<String> mXValues = new ArrayList<>();
+    private List<Float> mYValues = new ArrayList<>();
 
     public DataAddAdapter(Context context) {
         mContext = context;
+        mXValues.add(null);
+        mYValues.add(null);
     }
 
     @Override
@@ -48,11 +59,57 @@ public class DataAddAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        switch (holder.getItemViewType()){
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+        EditText.OnFocusChangeListener onFocusChangeListener = new EditText.OnFocusChangeListener
+                () {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                EditText editText = (EditText) v;
+                if (!hasFocus) {
+                    saveToValueArray(editText, position);
+                }
+            }
+        };
+
+        switch (holder.getItemViewType()) {
             case TYPE_BUTTON:
+                AddButtonViewHolder buttonHolder = (AddButtonViewHolder) holder;
+                buttonHolder.mButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mLastIndex = mItemIndex++;
+                        mXValues.add(null);
+                        mYValues.add(null);
+                        notifyDataSetChanged();
+                    }
+                });
                 break;
             case TYPE_MAIN:
+                MainViewHolder viewHolder = (MainViewHolder) holder;
+                EditText xEditText = viewHolder.mXEditText;
+                EditText yEditText = viewHolder.mYEditText;
+                xEditText.setOnFocusChangeListener(onFocusChangeListener);
+                yEditText.setOnFocusChangeListener(onFocusChangeListener);
+                if (position == mLastIndex) {
+                    mLastXEditText = xEditText;
+                    mLastYEditText = yEditText;
+                }
+                if (position == mItemIndex && mLastIndex != -1) {
+                    xEditText.setText(mLastXEditText.getText());
+                    yEditText.setText(mLastYEditText.getText());
+                    saveToValueArray(xEditText, position);
+                    saveToValueArray(yEditText, position);
+                    mLastIndex = -1;
+                    mLastXEditText = null;
+                    mLastYEditText = null;
+                } else {
+                    if (mXValues.get(position) != null) {
+                        xEditText.setText(mXValues.get(position));
+                    }
+                    if (mYValues.get(position) != null) {
+                        yEditText.setText(mYValues.get(position).toString());
+                    }
+                }
                 break;
         }
 
@@ -83,6 +140,8 @@ public class DataAddAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             super(itemView);
             this.itemView = itemView;
             ButterKnife.bind(this, itemView);
+            mXEditText.setTag("X");
+            mYEditText.setTag("Y");
         }
     }
 
@@ -97,6 +156,17 @@ public class DataAddAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             super(itemView);
             this.itemView = itemView;
             ButterKnife.bind(this, itemView);
+        }
+    }
+
+    private void saveToValueArray(EditText v, int position) {
+        try {
+            if (v.getTag().equals("X"))
+                mXValues.set(position, v.getText().toString());
+            else mYValues.set(position, Float.valueOf(v.getText().toString()));
+        } catch (NumberFormatException e) {
+            Toast.makeText(mContext, mContext.getString(R.string.not_float), Toast.LENGTH_SHORT)
+                    .show();
         }
     }
 }
