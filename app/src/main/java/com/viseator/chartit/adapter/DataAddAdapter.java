@@ -2,20 +2,27 @@ package com.viseator.chartit.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.utils.EntryXComparator;
 import com.viseator.chartit.R;
+import com.viseator.chartit.utils.Utils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static android.R.id.list;
 
 /**
  * Created by viseator on 10/12/17.
@@ -25,6 +32,7 @@ import butterknife.ButterKnife;
 
 public class DataAddAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+    private static final String TAG = "@vir DataAddAdapter";
     public static final int TYPE_MAIN = 0x1;
     public static final int TYPE_BUTTON = 0x2;
     private int mItemIndex = 0;
@@ -97,6 +105,8 @@ public class DataAddAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 if (position == mItemIndex && mLastIndex != -1) {
                     xEditText.setText(mLastXEditText.getText());
                     yEditText.setText(mLastYEditText.getText());
+                    xEditText.requestFocus();
+                    xEditText.selectAll();
                     saveToValueArray(xEditText, position);
                     saveToValueArray(yEditText, position);
                     mLastIndex = -1;
@@ -160,13 +170,38 @@ public class DataAddAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     private void saveToValueArray(EditText v, int position) {
-        try {
-            if (v.getTag().equals("X"))
-                mXValues.set(position, v.getText().toString());
-            else mYValues.set(position, Float.valueOf(v.getText().toString()));
-        } catch (NumberFormatException e) {
-            Toast.makeText(mContext, mContext.getString(R.string.not_float), Toast.LENGTH_SHORT)
-                    .show();
+        Log.d(TAG, String.valueOf(v.getText().toString()));
+        if (v.getTag().equals("X"))
+            mXValues.set(position, v.getText().toString());
+        else if (!Objects.equals(v.getText().toString(), "")) {
+            mYValues.set(position, Float.valueOf(v.getText().toString()));
         }
     }
+
+    public List<Entry> getEntries() {
+        boolean isString = false;
+        List<Entry> result = new ArrayList<>(mItemIndex + 1);
+        for (String s : mXValues) {
+            if (!Utils.isNumeric(s)) {
+                isString = true;
+                break;
+            }
+        }
+        for (int i = 0; i < mItemIndex + 1; i++) {
+            if (mXValues.get(i) == null || mYValues.get(i) == null) {
+                return null;
+            }
+            if (isString) {
+                Entry entry = new Entry(i, mYValues.get(i));
+                entry.setData(mXValues.get(i));
+                result.add(entry);
+            } else {
+                Entry entry = new Entry(Float.valueOf(mXValues.get(i)), mYValues.get(i));
+                result.add(entry);
+            }
+        }
+        Collections.sort(result, new EntryXComparator());
+        return result;
+    }
 }
+
