@@ -7,8 +7,8 @@
     <color name="chartOrange">#E3935D</color>
     <color name="chartRed">#E16757</color>
     <color name="chartDarkBlue">#605FF0</color>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#9DA8AF</color>
+    <color name="colorPrimaryDark">#767676</color>
     <color name="colorAccent">#FF4081</color>
     <color name="mainBackground">#abdddc</color>
     <color name="mer">#4c829e</color>
@@ -154,4 +154,6 @@
     <color name="DarkBlue">#00008B</color>
     <color name="Navy">#000080</color>
     <color name="Black">#000000</color>
+    <color name="BlueChart">#61A5E8</color>
+    <color name="BlueChartDark">#605FF0</color>
 </resources>

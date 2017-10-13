@@ -32,6 +32,7 @@ public class ChartStyle {
     }
 
     private static void create(ChartStyleEntityDao chartStyleEntityDao) {
+        // init chart style here
         Log.d(TAG, String.valueOf("Create new chartStyle"));
         ChartStyleEntity chartStyleEntity = new ChartStyleEntity();
         chartStyleEntity.setXAxisPosition(1);

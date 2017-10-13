@@ -84,11 +84,11 @@ public class LineChartPresenter implements LineChartContract.Presenter {
 //        style.setValueTextColor("#ff0000");
         style.setLineWidth(2f);
         style.setFillAlpha(100); // FIXME: 6/9/17 mpchart
-        style.setDrawValues(false);
-        style.setFillColor(R.color.chartBlue);
+//        style.setDrawValues(false);
+        style.setFillColor(R.color.BlueChart);
 
         style.setDrawCircleHole(false);
-        style.setCircleColor(R.color.chartBlue);
+        style.setCircleColor(R.color.BlueChartDark);
         style.setCircleRadius(4f);
         style.setDrawFill(true);
         style.setMode(ChartSetStyle.MODE_LINEAR);
@@ -98,7 +98,7 @@ public class LineChartPresenter implements LineChartContract.Presenter {
 
     public void setDataStyle(int pos, LineDataSet lineDataSet) {
 //        lineDataSet.setMode(LineDataSet.Mode.CUBIC_BEZIER); // FIXME: 6/9/17 mpchart
-        lineDataSet.setColor(R.color.chartBlue);
+        lineDataSet.setColor(R.color.BlueChartDark);
         ChartSetStyleEntity styleEntity = mChartSetStyle.getChartSetStyle(pos);
         if (isSetted(styleEntity.getMode())) {
             switch (styleEntity.getMode()) {

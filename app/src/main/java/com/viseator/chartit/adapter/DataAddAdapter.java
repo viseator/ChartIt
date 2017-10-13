@@ -2,12 +2,15 @@ package com.viseator.chartit.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.InputType;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.utils.EntryXComparator;
@@ -108,6 +111,9 @@ public class DataAddAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 if (position == mItemIndex && mLastIndex != -1) {
                     xEditText.setText(mLastXEditText.getText());
                     yEditText.setText(mLastYEditText.getText());
+                    if (Utils.isNumeric(mLastXEditText.getText().toString())) {
+                        xEditText.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
+                    }
                     xEditText.requestFocus();
                     xEditText.selectAll();
                     saveToValueArray(xEditText, position);
@@ -173,7 +179,6 @@ public class DataAddAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     private void saveToValueArray(EditText v, int position) {
-        Log.d(TAG, String.valueOf(v.getText().toString()));
         if (v.getTag().equals("X"))
             mXValues.set(position, v.getText().toString());
         else if (!Objects.equals(v.getText().toString(), "")) {

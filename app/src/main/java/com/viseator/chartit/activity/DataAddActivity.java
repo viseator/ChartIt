@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.data.Entry;
 import com.viseator.chartit.App;
@@ -73,6 +74,11 @@ public class DataAddActivity extends BaseActivity {
             getCurrentFocus().clearFocus();
         }
         List<Entry> entries = mDataAddAdapter.getEntries();
+        if(entries.size() < 2) {
+            Toast.makeText(this, getResources().getString(R.string.no_enough_point), Toast
+                    .LENGTH_SHORT).show();
+            return;
+        }
         mChartDataRepository.addData(entries, mEditText.getText().toString());
         Intent intent = new Intent(getApplicationContext(), LineChartActivity.class);
         intent.putExtra("position", mChartDataRepository.count() - 1);

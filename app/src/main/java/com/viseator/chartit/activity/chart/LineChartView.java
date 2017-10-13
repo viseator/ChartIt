@@ -15,6 +15,7 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.dataprovider.LineDataProvider;
 import com.viseator.chartit.BaseView;
+import com.viseator.chartit.R;
 import com.viseator.chartit.data.style.ChartSetStyleEntity;
 import com.viseator.chartit.data.style.ChartStyle;
 import com.viseator.chartit.data.style.ChartStyleEntity;
