@@ -102,6 +102,9 @@ public class DataAddAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     mLastXEditText = xEditText;
                     mLastYEditText = yEditText;
                 }
+                if (mItemIndex == 0) {
+                    xEditText.requestFocus();
+                }
                 if (position == mItemIndex && mLastIndex != -1) {
                     xEditText.setText(mLastXEditText.getText());
                     yEditText.setText(mLastYEditText.getText());

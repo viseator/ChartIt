@@ -1,15 +1,23 @@
 package com.viseator.chartit.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 import com.github.mikephil.charting.data.Entry;
+import com.viseator.chartit.App;
 import com.viseator.chartit.BaseActivity;
 import com.viseator.chartit.R;
+import com.viseator.chartit.activity.chart.LineChartActivity;
 import com.viseator.chartit.adapter.DataAddAdapter;
+import com.viseator.chartit.data.chart.ChartDataEntityDao;
+import com.viseator.chartit.data.chart.ChartDataRepository;
+import com.viseator.chartit.data.chart.local.LocalChartData;
+import com.viseator.chartit.data.style.DaoSession;
 
 import java.util.List;
 
@@ -22,6 +30,12 @@ public class DataAddActivity extends BaseActivity {
     RecyclerView mRecyclerView;
     @BindView(R.id.generate_chart_button)
     Button mButton;
+    @BindView(R.id.data_add_title)
+    EditText mEditText;
+    DaoSession daoSession;
+    ChartDataEntityDao chartDataEntityDao;
+    ChartDataRepository mChartDataRepository;
+    LocalChartData mLocalChartData;
 
     private DataAddAdapter mDataAddAdapter;
 
@@ -37,6 +51,10 @@ public class DataAddActivity extends BaseActivity {
 
     @Override
     protected void baseInit() {
+        daoSession = ((App) getApplication()).getDaoSession();
+        chartDataEntityDao = daoSession.getChartDataEntityDao();
+        mLocalChartData = LocalChartData.getInstance(chartDataEntityDao);
+        mChartDataRepository = ChartDataRepository.getInstance(mLocalChartData);
 
     }
 
@@ -55,5 +73,9 @@ public class DataAddActivity extends BaseActivity {
             getCurrentFocus().clearFocus();
         }
         List<Entry> entries = mDataAddAdapter.getEntries();
+        mChartDataRepository.addData(entries, mEditText.getText().toString());
+        Intent intent = new Intent(getApplicationContext(), LineChartActivity.class);
+        intent.putExtra("position", mChartDataRepository.count() - 1);
+        startActivity(intent);
     }
 }
