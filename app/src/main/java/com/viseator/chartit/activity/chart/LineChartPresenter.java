@@ -1,5 +1,6 @@
 package com.viseator.chartit.activity.chart;
 
+import android.content.Context;
 import android.graphics.Color;
 
 import com.github.mikephil.charting.data.Entry;
@@ -33,6 +34,7 @@ public class LineChartPresenter implements LineChartContract.Presenter {
     private ChartStyleEntity mChartStyleEntity;
     private LineChartContract.View mView;
     private int mPos;
+    private Context mContext;
 
     public void showAllChartSetStyles() {
         List<ChartSetStyleEntity> list = mChartSetStyle.getAllChartSetStyles();
@@ -44,8 +46,11 @@ public class LineChartPresenter implements LineChartContract.Presenter {
         mChartDataRepo.updateData(mPos, entries, mChartDataRepo.getLabel(0));
     }
 
-    public LineChartPresenter(IDataSource dataSource, LineChartContract.View view, ChartSetStyle
-            chartSetStyle, ChartStyleEntityDao chartStyleEntityDao, int pos) {
+    public LineChartPresenter(Context context, IDataSource dataSource, LineChartContract.View view,
+                              ChartSetStyle
+                                      chartSetStyle, ChartStyleEntityDao chartStyleEntityDao, int
+                                      pos) {
+        mContext = context;
         mChartSetStyle = chartSetStyle;
         mChartDataRepo = dataSource;
         mView = view;
@@ -85,10 +90,10 @@ public class LineChartPresenter implements LineChartContract.Presenter {
         style.setLineWidth(2f);
         style.setFillAlpha(100); // FIXME: 6/9/17 mpchart
 //        style.setDrawValues(false);
-        style.setFillColor(R.color.BlueChart);
+        style.setFillColor(mContext.getResources().getColor(R.color.colorPrimary));
 
         style.setDrawCircleHole(false);
-        style.setCircleColor(R.color.BlueChartDark);
+        style.setCircleColor(mContext.getResources().getColor(R.color.colorPrimary));
         style.setCircleRadius(4f);
         style.setDrawFill(true);
         style.setMode(ChartSetStyle.MODE_LINEAR);
@@ -98,7 +103,7 @@ public class LineChartPresenter implements LineChartContract.Presenter {
 
     public void setDataStyle(int pos, LineDataSet lineDataSet) {
 //        lineDataSet.setMode(LineDataSet.Mode.CUBIC_BEZIER); // FIXME: 6/9/17 mpchart
-        lineDataSet.setColor(R.color.BlueChartDark);
+        lineDataSet.setColor(mContext.getResources().getColor(R.color.colorPrimary));
         ChartSetStyleEntity styleEntity = mChartSetStyle.getChartSetStyle(pos);
         if (isSetted(styleEntity.getMode())) {
             switch (styleEntity.getMode()) {
