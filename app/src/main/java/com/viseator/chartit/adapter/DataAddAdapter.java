@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.utils.EntryXComparator;
@@ -97,6 +98,7 @@ public class DataAddAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 break;
             case TYPE_MAIN:
                 MainViewHolder viewHolder = (MainViewHolder) holder;
+                viewHolder.setPos(position);
                 EditText xEditText = viewHolder.mXEditText;
                 EditText yEditText = viewHolder.mYEditText;
                 xEditText.setOnFocusChangeListener(onFocusChangeListener);
@@ -153,7 +155,16 @@ public class DataAddAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         @BindView(R.id.y_editText)
         EditText mYEditText;
 
+        int mPos;
         View itemView;
+
+        public void setPos(int pos) {
+            mPos = pos;
+        }
+
+        public int getPos() {
+            return mPos;
+        }
 
         public MainViewHolder(View itemView) {
             super(itemView);
@@ -165,7 +176,6 @@ public class DataAddAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     public static class AddButtonViewHolder extends RecyclerView.ViewHolder {
-
         @BindView(R.id.add_data_recyclerView_button)
         Button mButton;
 
@@ -210,6 +220,19 @@ public class DataAddAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
         Collections.sort(result, new EntryXComparator());
         return result;
+    }
+
+    public void removeItem(int pos) {
+        if (mItemIndex == 1) {
+            Toast.makeText(mContext, mContext.getString(R.string.least_one_data), Toast
+                    .LENGTH_SHORT).show();
+            return;
+        }
+        --mItemIndex;
+        mXValues.remove(pos);
+        mYValues.remove(pos);
+        notifyItemRemoved(pos);
+        notifyDataSetChanged();
     }
 }
 

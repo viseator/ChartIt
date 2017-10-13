@@ -7,4 +7,6 @@
     <string name="not_float">Y值应为数值</string>
     <string name="title">标题</string>
     <string name="no_enough_point">没有足够的点</string>
+    <string name="least_one_data">至少应包含两个点</string>
+    <string name="no_title">无标题</string>
 </resources>

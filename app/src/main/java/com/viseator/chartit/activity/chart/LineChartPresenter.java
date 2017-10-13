@@ -104,6 +104,7 @@ public class LineChartPresenter implements LineChartContract.Presenter {
     public void setDataStyle(int pos, LineDataSet lineDataSet) {
 //        lineDataSet.setMode(LineDataSet.Mode.CUBIC_BEZIER); // FIXME: 6/9/17 mpchart
         lineDataSet.setColor(mContext.getResources().getColor(R.color.colorPrimary));
+        lineDataSet.setValueTextColor(mContext.getResources().getColor(R.color.colorPrimary));
         ChartSetStyleEntity styleEntity = mChartSetStyle.getChartSetStyle(pos);
         if (isSetted(styleEntity.getMode())) {
             switch (styleEntity.getMode()) {

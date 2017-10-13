@@ -30,6 +30,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="@string/title"
+        android:text="@string/no_title"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"

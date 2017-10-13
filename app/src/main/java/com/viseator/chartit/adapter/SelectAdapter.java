@@ -3,6 +3,7 @@ package com.viseator.chartit.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,12 +37,20 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.list_content_data)
-        TextView dataView;
         @BindView(R.id.list_content_label)
         TextView labelView;
 
         View itemView;
+
+        int mPos;
+
+        public int getPos() {
+            return mPos;
+        }
+
+        public void setPos(int pos) {
+            mPos = pos;
+        }
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -58,6 +67,9 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
+        String label = mChartDataRepository.getLabel(position);
+        holder.labelView.setText(label);
+        holder.setPos(position);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,18 +78,16 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
                 mContext.startActivity(intent);
             }
         });
-        holder.labelView.setText(mChartDataRepository.getLabel(position));
-        List<Entry> data = (List<Entry>) mChartDataRepository.getData(position);
-        StringBuilder sb = new StringBuilder();
-        for (Entry entry : data) {
-            sb.append(entry.getX() + ":" + entry.getY() + " ");
-        }
-        holder.dataView.setText(sb);
-
     }
 
     @Override
     public int getItemCount() {
         return mChartDataRepository.count();
+    }
+
+    public void removeItem(int pos){
+        mChartDataRepository.removeData(pos);
+        notifyItemRemoved(pos);
+        notifyDataSetChanged();
     }
 }

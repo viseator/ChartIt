@@ -51,7 +51,7 @@ public class LineChartActivity extends BaseActivity {
     protected void onPause() {
         super.onPause();
         List<Entry> entries = new ArrayList<>();
-        for(int i = 0; i < mLineChartView.getData().getDataSetByIndex(0).getEntryCount(); i++){
+        for (int i = 0; i < mLineChartView.getData().getDataSetByIndex(0).getEntryCount(); i++) {
             entries.add(mLineChartView.getData().getDataSetByIndex(0).getEntryForIndex(i));
         }
         mPresenter.updateData(entries);

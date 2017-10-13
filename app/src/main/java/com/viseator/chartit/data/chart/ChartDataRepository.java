@@ -1,5 +1,7 @@
 package com.viseator.chartit.data.chart;
 
+import android.util.Log;
+
 import com.github.mikephil.charting.data.Entry;
 
 import java.util.List;
@@ -11,6 +13,7 @@ import java.util.List;
  */
 
 public class ChartDataRepository implements IDataSource {
+    private static final String TAG = "@vir ChartDataRepository";
     private static ChartDataRepository INSTANCE = null;
     private IDataSource mLocalChartData;
 

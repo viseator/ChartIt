@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -65,6 +66,26 @@ public class DataAddActivity extends BaseActivity {
         mDataAddAdapter = new DataAddAdapter(this);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setAdapter(mDataAddAdapter);
+
+        ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0,
+                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder,
+                                  RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                if (getCurrentFocus() != null) {
+                    getCurrentFocus().clearFocus();
+                }
+                DataAddAdapter.MainViewHolder holder = (DataAddAdapter.MainViewHolder) viewHolder;
+                mDataAddAdapter.removeItem(holder.getPos());
+            }
+        };
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+        itemTouchHelper.attachToRecyclerView(mRecyclerView);
     }
 
 
@@ -74,7 +95,7 @@ public class DataAddActivity extends BaseActivity {
             getCurrentFocus().clearFocus();
         }
         List<Entry> entries = mDataAddAdapter.getEntries();
-        if(entries.size() < 2) {
+        if (entries.size() < 2) {
             Toast.makeText(this, getResources().getString(R.string.no_enough_point), Toast
                     .LENGTH_SHORT).show();
             return;
@@ -83,5 +104,6 @@ public class DataAddActivity extends BaseActivity {
         Intent intent = new Intent(getApplicationContext(), LineChartActivity.class);
         intent.putExtra("position", mChartDataRepository.count() - 1);
         startActivity(intent);
+        finish();
     }
 }
