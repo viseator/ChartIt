@@ -18,6 +18,7 @@ import com.viseator.chartit.adapter.SelectAdapter;
 import com.viseator.chartit.data.chart.ChartDataEntityDao;
 import com.viseator.chartit.data.chart.ChartDataRepository;
 import com.viseator.chartit.data.chart.local.LocalChartData;
+import com.viseator.chartit.data.style.ChartStyle;
 import com.viseator.chartit.data.style.DaoSession;
 
 import butterknife.BindView;
@@ -44,6 +45,7 @@ public class DataSelectActivity extends BaseActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ChartStyle.getChartStyleEntity(getChartStyleDao());
     }
 
     @Override

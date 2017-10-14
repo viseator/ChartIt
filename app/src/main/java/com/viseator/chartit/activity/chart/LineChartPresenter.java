@@ -47,26 +47,23 @@ public class LineChartPresenter implements LineChartContract.Presenter {
     }
 
     public LineChartPresenter(Context context, IDataSource dataSource, LineChartContract.View view,
-                              ChartSetStyle
-                                      chartSetStyle, ChartStyleEntityDao chartStyleEntityDao, int
-                                      pos) {
+                              ChartSetStyle chartSetStyle, ChartStyleEntityDao
+                                      chartStyleEntityDao) {
         mContext = context;
         mChartSetStyle = chartSetStyle;
         mChartDataRepo = dataSource;
         mView = view;
-        mPos = pos;
         mChartStyleEntity = ChartStyle.getChartStyleEntity(chartStyleEntityDao);
     }
 
     public void initView() {
         initTestStyle();
         mView.initChart(); // TODO: 6/1/17 separate initChart and set data
-        setViewData(mPos);
-        mView.setOnTouchListener();
         mView.setProperties(mChartStyleEntity);
     }
 
-    private void setViewData(int pos) {
+
+    public void setViewData(int pos) {
         List<Entry> entries = (ArrayList<Entry>) mChartDataRepo.getData(pos);
         LineDataSet lineDataSet = new LineDataSet(entries, mChartDataRepo.getLabel(mPos));
         setDataStyle(0, lineDataSet);
@@ -81,6 +78,7 @@ public class LineChartPresenter implements LineChartContract.Presenter {
             }
             mView.setXFormatter(new XAxisFormatter(formatterString));
         }
+        mView.setOnTouchListener();
     }
 
     private void initTestStyle() {

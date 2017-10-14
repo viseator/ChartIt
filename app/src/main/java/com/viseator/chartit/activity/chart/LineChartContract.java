@@ -24,6 +24,7 @@ public interface LineChartContract {
         void showAllChartSetStyles();
 
         void updateData(List<? extends Entry> entries);
+        void setViewData(int pos);
     }
 
     interface View extends BaseView<Presenter> {
