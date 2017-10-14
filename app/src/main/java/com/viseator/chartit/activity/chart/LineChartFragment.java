@@ -1,8 +1,8 @@
 package com.viseator.chartit.activity.chart;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +28,7 @@ import butterknife.ButterKnife;
 
 public class LineChartFragment extends BaseFragment {
 
+    private static final String TAG = "@vir LineChartFragment";
     @BindView(R.id.line_chart)
     LineChartView mLineChartView;
     LineChartContract.Presenter mPresenter;
@@ -45,6 +46,7 @@ public class LineChartFragment extends BaseFragment {
     @Override
     public void onPause() {
         super.onPause();
+        Log.d(TAG, String.valueOf("onPause"));
         List<Entry> entries = new ArrayList<>();
         for (int i = 0; i < mLineChartView.getData().getDataSetByIndex(0).getEntryCount(); i++) {
             entries.add(mLineChartView.getData().getDataSetByIndex(0).getEntryForIndex(i));

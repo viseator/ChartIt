@@ -77,7 +77,6 @@ public class LineChartTouchListener extends BarLineChartTouchListener {
 
             case MotionEvent.ACTION_DOWN:
 
-
                 startAction(event);
 
                 stopDeceleration();

@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.viseator.chartit.data.chart.ChartDataEntityDao;
+import com.viseator.chartit.data.chart.ChartDataRepository;
+import com.viseator.chartit.data.chart.local.LocalChartData;
 import com.viseator.chartit.data.style.ChartSetStyleEntityDao;
 import com.viseator.chartit.data.style.ChartStyleEntityDao;
 import com.viseator.chartit.data.style.DaoSession;
@@ -21,8 +23,10 @@ import butterknife.ButterKnife;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
+
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle
+            persistentState) {
         super.onCreate(savedInstanceState, persistentState);
     }
 
@@ -50,6 +54,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected abstract int getLayout();
 
     protected abstract void baseInit();
+
 
     protected abstract void initView();
 
