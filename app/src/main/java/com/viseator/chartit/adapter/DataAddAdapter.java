@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.utils.EntryXComparator;
 import com.viseator.chartit.R;
+import com.viseator.chartit.data.chart.ChartDataRepository;
 import com.viseator.chartit.utils.Utils;
 
 import java.util.ArrayList;
@@ -41,16 +42,38 @@ public class DataAddAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public static final int TYPE_BUTTON = 0x2;
     private int mItemIndex = 0;
     private int mLastIndex = -1;
+    private int mPos;
     private Context mContext;
     private EditText mLastXEditText;
     private EditText mLastYEditText;
     private List<String> mXValues = new ArrayList<>();
     private List<Float> mYValues = new ArrayList<>();
+    private ChartDataRepository mChartDataRepository;
 
     public DataAddAdapter(Context context) {
         mContext = context;
         mXValues.add(null);
         mYValues.add(null);
+    }
+
+    public DataAddAdapter(Context context, int pos) {
+        mContext = context;
+        mPos = pos;
+        initData(pos);
+    }
+
+    private void initData(int pos) {
+        mChartDataRepository = ChartDataRepository.getInstance();
+        List<Entry> entries = (List<Entry>) mChartDataRepository.getData(pos);
+        boolean isString = false;
+        if (entries.get(0).getData() != null) {
+            isString = true;
+        }
+        for (Entry e : entries) {
+            mXValues.add(isString ? (String) e.getData() : String.valueOf(e.getX()));
+            mYValues.add(e.getY());
+        }
+        mItemIndex = entries.size() - 1;
     }
 
     @Override
@@ -194,6 +217,10 @@ public class DataAddAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         else if (!Objects.equals(v.getText().toString(), "")) {
             mYValues.set(position, Float.valueOf(v.getText().toString()));
         }
+    }
+
+    public void saveBack(String label) {
+        mChartDataRepository.updateData(mPos, getEntries(), label);
     }
 
     public List<Entry> getEntries() {
