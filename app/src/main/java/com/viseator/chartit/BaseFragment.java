@@ -1,11 +1,6 @@
 package com.viseator.chartit;
 
-import android.app.Fragment;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.v4.app.Fragment;
 
 import com.viseator.chartit.data.chart.ChartDataEntityDao;
 import com.viseator.chartit.data.style.ChartSetStyleEntityDao;
@@ -18,7 +13,7 @@ import com.viseator.chartit.data.style.DaoSession;
  * viseator@gmail.com
  */
 
-public class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment {
 
     protected ChartDataEntityDao getChartDataDao() {
         DaoSession daoSession = ((App) getActivity().getApplication()).getDaoSession();
@@ -34,4 +29,5 @@ public class BaseFragment extends Fragment {
         DaoSession daoSession = ((App) getActivity().getApplication()).getDaoSession();
         return daoSession.getChartSetStyleEntityDao();
     }
+
 }

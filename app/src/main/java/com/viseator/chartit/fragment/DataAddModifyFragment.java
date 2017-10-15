@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,8 +65,10 @@ public class DataAddModifyFragment extends BaseFragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         if (mPos == -1) {
             mDataAddAdapter = new DataAddAdapter(getActivity());
+            mButton.setText(getResources().getString(R.string.generate_chart));
         } else {
             mDataAddAdapter = new DataAddAdapter(getActivity(), mPos);
+            mButton.setText(getResources().getString(R.string.update_data));
         }
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setAdapter(mDataAddAdapter);
@@ -116,4 +119,5 @@ public class DataAddModifyFragment extends BaseFragment {
                     .save_success), Toast.LENGTH_SHORT).show();
         }
     }
+
 }

@@ -46,6 +46,10 @@ public class LineChartFragment extends BaseFragment {
     @Override
     public void onPause() {
         super.onPause();
+        updateData();
+    }
+
+    public void updateData(){
         Log.d(TAG, String.valueOf("onPause"));
         List<Entry> entries = new ArrayList<>();
         for (int i = 0; i < mLineChartView.getData().getDataSetByIndex(0).getEntryCount(); i++) {
@@ -53,7 +57,6 @@ public class LineChartFragment extends BaseFragment {
         }
         mPresenter.updateData(entries);
     }
-
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

@@ -76,6 +76,12 @@ public class DataAddAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         mItemIndex = entries.size() - 1;
     }
 
+    public void refreshData() {
+        mXValues.clear();
+        mYValues.clear();
+        initData(mPos);
+    }
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v;
