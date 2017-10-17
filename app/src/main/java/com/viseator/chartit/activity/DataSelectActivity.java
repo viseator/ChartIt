@@ -21,6 +21,8 @@ import com.viseator.chartit.data.chart.local.LocalChartData;
 import com.viseator.chartit.data.style.ChartStyle;
 import com.viseator.chartit.data.style.DaoSession;
 
+import org.greenrobot.greendao.query.QueryBuilder;
+
 import butterknife.BindView;
 
 /**
