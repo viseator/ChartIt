@@ -23,7 +23,7 @@ public interface LineChartContract {
 
         void showAllChartSetStyles();
 
-        void updateData(List<? extends Entry> entries);
+        void updateData(int pos, List<? extends Entry> entries);
 
         void setViewData(int pos);
     }

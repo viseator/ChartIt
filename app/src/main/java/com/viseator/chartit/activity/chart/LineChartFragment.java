@@ -33,37 +33,34 @@ public class LineChartFragment extends BaseFragment {
     LineChartView mLineChartView;
     LineChartContract.Presenter mPresenter;
 
+    private int mPos;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle
             savedInstanceState) {
+        Log.d(TAG, String.valueOf("create line chart"));
+        mPos = getArguments().getInt("pos");
         View view = inflater.inflate(R.layout.fragment_line_chart, container, false);
         ButterKnife.bind(this, view);
         return view;
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        updateData();
-    }
-
-    public void updateData(){
-        Log.d(TAG, String.valueOf("onPause"));
+    public void updateData() {
         List<Entry> entries = new ArrayList<>();
         for (int i = 0; i < mLineChartView.getData().getDataSetByIndex(0).getEntryCount(); i++) {
             entries.add(mLineChartView.getData().getDataSetByIndex(0).getEntryForIndex(i));
         }
-        mPresenter.updateData(entries);
+        mPresenter.updateData(mPos, entries);
     }
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mPresenter = new LineChartPresenter(getActivity(), ChartDataRepository.
-                getInstance(LocalChartData.getInstance(getChartDataDao())), mLineChartView, new
+                getInstance(), mLineChartView, new
                 ChartSetStyle(getChartSetStyleEntityDao()), getChartStyleDao());
         mPresenter.initView();
-        mPresenter.setViewData(getArguments().getInt("pos"));
+        mPresenter.setViewData(mPos);
     }
 }

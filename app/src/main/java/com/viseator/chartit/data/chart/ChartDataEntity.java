@@ -31,7 +31,7 @@ public class ChartDataEntity {
 
     @Generated(hash = 1831722343)
     public ChartDataEntity(Long id, String mainValue, String mapValue, String alias,
-            String label, Integer pos, int type, Long time) {
+                           String label, Integer pos, int type, Long time) {
         this.id = id;
         this.mainValue = mainValue;
         this.mapValue = mapValue;
@@ -68,7 +68,7 @@ public class ChartDataEntity {
 
     @Override
     public String toString() {
-        return String.valueOf(id)+" - " +mainValue + " : " + mapValue;
+        return String.valueOf(id) + " - " + mainValue + " : " + mapValue + "alias:" + alias;
     }
 
     public Long getTime() {

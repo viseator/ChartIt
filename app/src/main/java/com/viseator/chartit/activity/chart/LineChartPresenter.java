@@ -42,8 +42,8 @@ public class LineChartPresenter implements LineChartContract.Presenter {
     }
 
     @Override
-    public void updateData(List<? extends Entry> entries) {
-        mChartDataRepo.updateData(mPos, entries, mChartDataRepo.getLabel(0));
+    public void updateData(int pos, List<? extends Entry> entries) {
+        mChartDataRepo.updateData(pos, entries, mChartDataRepo.getLabel(0));
     }
 
     public LineChartPresenter(Context context, IDataSource dataSource, LineChartContract.View view,

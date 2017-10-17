@@ -99,6 +99,7 @@ public class LocalChartData implements IDataSource {
 
     @Override
     public void updateData(Integer pos, List<? extends Entry> entries, String label) {
+        Thread.dumpStack();
         ChartDataEntity data = getChartDataEntityByPos(pos);
         if (data == null) {
             return;

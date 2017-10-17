@@ -34,6 +34,7 @@ import butterknife.OnClick;
  */
 
 public class DataAddModifyFragment extends BaseFragment {
+    private static final String TAG = "@vir ModifyFragment";
 
     @BindView(R.id.data_add_recyclerview)
     RecyclerView mRecyclerView;
@@ -58,7 +59,7 @@ public class DataAddModifyFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle
             savedInstanceState) {
-
+        Log.d(TAG, String.valueOf("create data view"));
         mView = inflater.inflate(R.layout.fragment_data_add_modify, container, false);
         ButterKnife.bind(this, mView);
 
@@ -104,8 +105,7 @@ public class DataAddModifyFragment extends BaseFragment {
             List<Entry> entries = mDataAddAdapter.getEntries();
             if (entries.size() < 2) {
                 Toast.makeText(getActivity(), getResources().getString(R.string.no_enough_point),
-                        Toast
-                                .LENGTH_SHORT).show();
+                        Toast.LENGTH_SHORT).show();
                 return;
             }
             mChartDataRepository.addData(entries, mEditText.getText().toString());
