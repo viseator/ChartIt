@@ -7,12 +7,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.viseator.chartit.ChartViewFragment;
 import com.viseator.chartit.R;
+import com.viseator.chartit.adapter.XAxisFormatter;
 import com.viseator.chartit.data.chart.ChartDataRepository;
 import com.viseator.chartit.utils.DataCoverter;
 
@@ -62,10 +64,28 @@ public class BarChartFragment extends ChartViewFragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        mBarChart.getDescription().setEnabled(false);
         List<BarEntry> entries = DataCoverter.toBarEntries((List<Entry>) mChartDataRepository
                 .getData(mPos));
+        mBarChart.getAxisRight().setEnabled(false);
+        mBarChart.getAxisLeft().setDrawGridLines(false);
+        XAxis mXAxis = mBarChart.getXAxis();
+        mXAxis.setDrawGridLines(false);
+        mXAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         BarDataSet barDataSet = new BarDataSet(entries, mChartDataRepository.getLabel(mPos));
+        barDataSet.setBarBorderColor(getResources().getColor(R.color.colorPrimaryDark));
+        barDataSet.setColor(getResources().getColor(R.color.colorPrimary));
         BarData barData = new BarData(barDataSet);
+        mBarChart.getLegend().setEnabled(false);
+        if (entries.get(0).getData() == null) {
+            mXAxis.setDrawLabels(false);
+        } else {
+            List<String> formatterString = new ArrayList<>(entries.size());
+            for (Entry e : entries) {
+                formatterString.add((String) e.getData());
+            }
+            mXAxis.setValueFormatter(new XAxisFormatter(formatterString));
+        }
         mBarChart.setData(barData);
     }
 }

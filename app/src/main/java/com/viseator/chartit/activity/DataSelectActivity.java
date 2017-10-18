@@ -4,11 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 
 import com.viseator.chartit.App;
 import com.viseator.chartit.BaseActivity;
@@ -23,6 +26,7 @@ import com.viseator.chartit.data.style.DaoSession;
 
 import org.greenrobot.greendao.query.QueryBuilder;
 
+import butterknife.BindInt;
 import butterknife.BindView;
 
 /**
@@ -36,6 +40,10 @@ public class DataSelectActivity extends BaseActivity {
     RecyclerView mRecyclerView;
     @BindView(R.id.add_new_data_button)
     FloatingActionButton mButton;
+    @BindView(R.id.select_drawer_layout)
+    DrawerLayout mDrawerLayout;
+    @BindView(R.id.drawer_list)
+    ListView mListView;
 
     private DaoSession daoSession;
     private ChartDataEntityDao chartDataEntityDao;
@@ -57,6 +65,10 @@ public class DataSelectActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        String[] test = {"test","test"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout
+                .simple_list_item_1, test);
+        mListView.setAdapter(adapter);
         mSelectAdapter = new SelectAdapter(this);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setHasFixedSize(true);
