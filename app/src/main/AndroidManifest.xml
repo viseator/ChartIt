@@ -33,6 +33,7 @@
         </activity>
         <activity
             android:name=".activity.chart.LineChartActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity android:name=".activity.DataAddActivity">

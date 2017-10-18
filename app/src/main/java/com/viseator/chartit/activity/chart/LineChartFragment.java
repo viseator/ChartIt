@@ -39,7 +39,6 @@ public class LineChartFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle
             savedInstanceState) {
-        Log.d(TAG, String.valueOf("create line chart"));
         mPos = getArguments().getInt("pos");
         View view = inflater.inflate(R.layout.fragment_line_chart, container, false);
         ButterKnife.bind(this, view);

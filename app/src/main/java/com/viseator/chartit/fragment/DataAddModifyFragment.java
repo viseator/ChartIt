@@ -59,7 +59,6 @@ public class DataAddModifyFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle
             savedInstanceState) {
-        Log.d(TAG, String.valueOf("create data view"));
         mView = inflater.inflate(R.layout.fragment_data_add_modify, container, false);
         ButterKnife.bind(this, mView);
 

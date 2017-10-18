@@ -72,4 +72,5 @@ public class LineChartActivity extends BaseActivity {
         super.onPause();
         mAdapter.saveLineChartState();
     }
+
 }

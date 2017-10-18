@@ -17,6 +17,8 @@ import com.github.mikephil.charting.listener.OnChartGestureListener;
 import com.github.mikephil.charting.utils.Utils;
 import com.github.mikephil.charting.utils.ViewPortHandler;
 
+import java.text.DecimalFormat;
+
 /**
  * Created by viseator on 9/17/17.
  * Wu Di
@@ -274,6 +276,7 @@ public class LineChartTouchListener extends BarLineChartTouchListener {
 
 //        Log.d(TAG, String.valueOf(mViewPortHandler.getTransY()));
 //        Log.d(TAG, String.valueOf(mViewPortHandler.getScaleY() * mContentHeight));
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
         if (mTouchingEntry != null) {
             // update the value of the touching entry
             mTouchingEntry.setY(mSaveY + getValueDelta(dY));
@@ -285,8 +288,11 @@ public class LineChartTouchListener extends BarLineChartTouchListener {
                 float scrollSpeed = 0.001f + ((0.2f - factor) / 0.2f) * 0.01f;
                 if (mViewPortHandler.getTransY() + mContentHeight < mViewPortHandler.getScaleY() *
                         mContentHeight) {
-                    mTouchingEntry.setY(mTouchingEntry.getY() + mChartYValueRange * scrollSpeed);
-                    mSaveY = mSaveY + mChartYValueRange * scrollSpeed;
+
+                    float dValueY = Float.valueOf(decimalFormat.format(mChartYValueRange *
+                            scrollSpeed));
+                    mTouchingEntry.setY(mTouchingEntry.getY() + dValueY);
+                    mSaveY = mSaveY + dValueY;
                     mChart.centerViewToY(mTouchingEntry.getY() - Math.abs(getValueDelta
                             (mContentHeight / 2 - event.getY())), mChart.getAxisLeft()
                             .getAxisDependency());
@@ -299,8 +305,10 @@ public class LineChartTouchListener extends BarLineChartTouchListener {
                 float scrollSpeed = 0.001f + ((factor - 0.8f) / 0.2f) * 0.01f;
                 if (mViewPortHandler.getTransY() > 0) {
                     // if not reached the bottom of Y
-                    mTouchingEntry.setY(mTouchingEntry.getY() - mChartYValueRange * scrollSpeed);
-                    mSaveY = mSaveY - mChartYValueRange * scrollSpeed;
+                    float dValueY = Float.valueOf(decimalFormat.format(mChartYValueRange *
+                            scrollSpeed));
+                    mTouchingEntry.setY(mTouchingEntry.getY() - dValueY);
+                    mSaveY = mSaveY - dValueY;
                     mChart.centerViewToY(mTouchingEntry.getY() + (getValueDelta
                             (mContentHeight / 2 - event.getY())), mChart.getAxisLeft()
                             .getAxisDependency());
@@ -321,7 +329,9 @@ public class LineChartTouchListener extends BarLineChartTouchListener {
      * @return the mapped value
      */
     private float getValueDelta(float dY) {
-        return -dY / mContentHeight / mViewPortHandler.getScaleY() * mChartYValueRange;
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        float rawData = -dY / mContentHeight / mViewPortHandler.getScaleY() * mChartYValueRange;
+        return Float.valueOf(decimalFormat.format(rawData));
     }
 }
 
