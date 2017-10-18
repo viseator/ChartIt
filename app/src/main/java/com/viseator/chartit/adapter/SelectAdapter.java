@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.viseator.chartit.R;
+import com.viseator.chartit.activity.chart.barchart.BarChartActivity;
 import com.viseator.chartit.activity.chart.linechart.LineChartActivity;
 import com.viseator.chartit.data.chart.ChartDataRepository;
 
@@ -69,7 +70,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, LineChartActivity.class);
+                Intent intent = new Intent(mContext, BarChartActivity.class);
                 intent.putExtra("position", position);
                 mContext.startActivity(intent);
             }

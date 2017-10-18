@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.viseator.chartit.ChartViewFragment;
 import com.viseator.chartit.R;
+import com.viseator.chartit.activity.chart.barchart.BarChartFragment;
 import com.viseator.chartit.activity.chart.linechart.LineChartFragment;
 import com.viseator.chartit.fragment.DataAddModifyFragment;
 
@@ -43,7 +44,7 @@ public class ChartViewPagerAdapter extends FragmentStatePagerAdapter {
                     mChartViewFragment = new LineChartFragment();
                     break;
                 case TYPE_BAR_CHART:
-//                    mChartViewFragment = new
+                    mChartViewFragment = new BarChartFragment();
                     break;
             }
             mChartViewFragment.setArguments(bundle);
