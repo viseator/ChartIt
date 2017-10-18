@@ -5,13 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.viseator.chartit.activity.chart.LineChartActivity">
-    <com.viseator.chartit.activity.chart.LineChartView
+    tools:context="com.viseator.chartit.activity.chart.linechart.LineChartActivity">
+    <com.viseator.chartit.activity.chart.linechart.LineChartView
         android:id="@+id/line_chart"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
-    </com.viseator.chartit.activity.chart.LineChartView>
+    </com.viseator.chartit.activity.chart.linechart.LineChartView>
 
 </RelativeLayout>

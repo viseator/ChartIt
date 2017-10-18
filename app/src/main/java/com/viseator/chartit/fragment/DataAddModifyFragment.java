@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,7 @@ import android.widget.Toast;
 import com.github.mikephil.charting.data.Entry;
 import com.viseator.chartit.BaseFragment;
 import com.viseator.chartit.R;
-import com.viseator.chartit.activity.chart.LineChartActivity;
+import com.viseator.chartit.activity.chart.linechart.LineChartActivity;
 import com.viseator.chartit.adapter.DataAddAdapter;
 import com.viseator.chartit.data.chart.ChartDataRepository;
 

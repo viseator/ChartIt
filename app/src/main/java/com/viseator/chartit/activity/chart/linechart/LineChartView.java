@@ -1,4 +1,4 @@
-package com.viseator.chartit.activity.chart;
+package com.viseator.chartit.activity.chart.linechart;
 
 import android.content.Context;
 import android.graphics.Color;

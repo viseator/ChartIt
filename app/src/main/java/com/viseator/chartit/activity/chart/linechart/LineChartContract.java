@@ -1,4 +1,4 @@
-package com.viseator.chartit.activity.chart;
+package com.viseator.chartit.activity.chart.linechart;
 
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;

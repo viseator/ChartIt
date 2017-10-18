@@ -1,4 +1,4 @@
-package com.viseator.chartit.activity.chart;
+package com.viseator.chartit.activity.chart.linechart;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.github.mikephil.charting.data.Entry;
 import com.viseator.chartit.BaseFragment;
+import com.viseator.chartit.ChartViewFragment;
 import com.viseator.chartit.R;
 import com.viseator.chartit.data.chart.ChartDataRepository;
 import com.viseator.chartit.data.chart.local.LocalChartData;
@@ -26,7 +27,7 @@ import butterknife.ButterKnife;
  * viseator@gmail.com
  */
 
-public class LineChartFragment extends BaseFragment {
+public class LineChartFragment extends ChartViewFragment {
 
     private static final String TAG = "@vir LineChartFragment";
     @BindView(R.id.line_chart)
@@ -45,6 +46,7 @@ public class LineChartFragment extends BaseFragment {
         return view;
     }
 
+    @Override
     public void updateData() {
         List<Entry> entries = new ArrayList<>();
         for (int i = 0; i < mLineChartView.getData().getDataSetByIndex(0).getEntryCount(); i++) {

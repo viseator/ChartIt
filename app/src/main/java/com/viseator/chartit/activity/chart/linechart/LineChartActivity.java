@@ -1,28 +1,24 @@
-package com.viseator.chartit.activity.chart;
+package com.viseator.chartit.activity.chart.linechart;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 
 import com.viseator.chartit.BaseActivity;
-import com.viseator.chartit.BaseFragment;
 import com.viseator.chartit.R;
-import com.viseator.chartit.adapter.LineChartViewPagerAdapter;
+import com.viseator.chartit.adapter.ChartViewPagerAdapter;
 
 import butterknife.BindView;
 
 public class LineChartActivity extends BaseActivity {
 
-    private static final String TAG = "@vir LineChartActivity";
     private int mPos;
     @BindView(R.id.line_chart_tablayout)
     TabLayout mTabLayout;
     @BindView(R.id.line_chart_viewpager)
     ViewPager mViewPager;
 
-    private LineChartViewPagerAdapter mAdapter;
+    private ChartViewPagerAdapter mAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,7 +38,8 @@ public class LineChartActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        mAdapter = new LineChartViewPagerAdapter(getSupportFragmentManager(), this, mPos);
+        mAdapter = new ChartViewPagerAdapter(getSupportFragmentManager(), this, mPos,
+                ChartViewPagerAdapter.TYPE_LINE_CHART);
         mViewPager.setAdapter(mAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -54,7 +51,7 @@ public class LineChartActivity extends BaseActivity {
 
             @Override
             public void onPageSelected(int position) {
-                if(position == 1){
+                if (position == 1) {
                     mAdapter.saveLineChartState();
                 }
                 mAdapter.notifyDataSetChanged();
