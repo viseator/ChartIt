@@ -58,7 +58,7 @@ public class LineChartPresenter implements LineChartContract.Presenter {
 
     public void initView() {
         initTestStyle();
-        mView.initChart(); // TODO: 6/1/17 separate initChart and set data
+        mView.initChart(); // TODO: 6/1/17 separate initChartActivity and set data
         mView.setProperties(mChartStyleEntity);
     }
 
