@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.viseator.chartit.R;
-import com.viseator.chartit.activity.chart.barchart.BarChartActivity;
 import com.viseator.chartit.activity.chart.linechart.LineChartActivity;
 import com.viseator.chartit.data.chart.ChartDataRepository;
 
@@ -26,10 +25,12 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
     private static final String TAG = "@vir SelectAdapter";
     private ChartDataRepository mChartDataRepository;
     private Context mContext;
+    Intent mIntent;
 
     public SelectAdapter(Context context) {
         mChartDataRepository = ChartDataRepository.getInstance();
         mContext = context;
+        mIntent = new Intent(mContext, LineChartActivity.class);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -62,6 +63,10 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         return new ViewHolder(v);
     }
 
+    public void setTargetActivity(Class<?> targetActivity) {
+        mIntent = new Intent(mContext, targetActivity);
+    }
+
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         String label = mChartDataRepository.getLabel(position);
@@ -70,9 +75,8 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, BarChartActivity.class);
-                intent.putExtra("position", position);
-                mContext.startActivity(intent);
+                mIntent.putExtra("position", position);
+                mContext.startActivity(mIntent);
             }
         });
     }

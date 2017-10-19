@@ -8,15 +8,15 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
+import android.widget.RadioGroup;
 
 import com.viseator.chartit.App;
 import com.viseator.chartit.BaseActivity;
 import com.viseator.chartit.R;
-import com.viseator.chartit.adapter.DataAddAdapter;
+import com.viseator.chartit.activity.chart.barchart.BarChartActivity;
+import com.viseator.chartit.activity.chart.linechart.LineChartActivity;
 import com.viseator.chartit.adapter.SelectAdapter;
 import com.viseator.chartit.data.chart.ChartDataEntityDao;
 import com.viseator.chartit.data.chart.ChartDataRepository;
@@ -24,9 +24,6 @@ import com.viseator.chartit.data.chart.local.LocalChartData;
 import com.viseator.chartit.data.style.ChartStyle;
 import com.viseator.chartit.data.style.DaoSession;
 
-import org.greenrobot.greendao.query.QueryBuilder;
-
-import butterknife.BindInt;
 import butterknife.BindView;
 
 /**
@@ -36,15 +33,15 @@ import butterknife.BindView;
  */
 
 public class DataSelectActivity extends BaseActivity {
+    private static final String TAG = "@vir DataSelectActivity";
     @BindView(R.id.data_recyclerView)
     RecyclerView mRecyclerView;
     @BindView(R.id.add_new_data_button)
     FloatingActionButton mButton;
     @BindView(R.id.select_drawer_layout)
     DrawerLayout mDrawerLayout;
-    @BindView(R.id.drawer_list)
-    ListView mListView;
-
+    @BindView(R.id.type_select_radio_group)
+    RadioGroup mRadioGroup;
     private DaoSession daoSession;
     private ChartDataEntityDao chartDataEntityDao;
     private ChartDataRepository mChartDataRepository;
@@ -65,10 +62,6 @@ public class DataSelectActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        String[] test = {"test","test"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout
-                .simple_list_item_1, test);
-        mListView.setAdapter(adapter);
         mSelectAdapter = new SelectAdapter(this);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setHasFixedSize(true);
@@ -100,6 +93,21 @@ public class DataSelectActivity extends BaseActivity {
                 startActivity(intent);
             }
         });
+        mRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                Log.d(TAG, String.valueOf(checkedId));
+                switch (checkedId) {
+                    case R.id.line_chart_radio_button:
+                        mSelectAdapter.setTargetActivity(LineChartActivity.class);
+                        break;
+                    case R.id.bar_chart_radio_button:
+                        mSelectAdapter.setTargetActivity(BarChartActivity.class);
+                        break;
+                }
+            }
+        });
+        mRadioGroup.check(R.id.line_chart_radio_button);
     }
 
     @Override

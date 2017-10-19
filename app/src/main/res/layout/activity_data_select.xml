@@ -32,7 +32,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginBottom="24dp"
-                android:layout_marginRight="24dp"
+                android:layout_marginEnd="24dp"
                 android:src="@drawable/ic_add"
                 app:fabSize="normal"
                 />
@@ -40,15 +40,33 @@
 
     </FrameLayout>
 
+    <RadioGroup
+        android:id="@+id/type_select_radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:background="@color/White"
+        android:paddingEnd="20dp"
+        >
 
-    <ListView
-        android:id="@+id/drawer_list"
-        android:layout_width="240dp"
-        android:layout_gravity="start"
-        android:layout_height="match_parent">
 
+        <RadioButton
+            android:id="@+id/line_chart_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/line_chart"
+            android:textSize="18sp"
+            />
 
-    </ListView>
+        <RadioButton
+            android:id="@+id/bar_chart_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bar_chart"
+            android:textSize="18sp"
+            />
+    </RadioGroup>
 
 
 </android.support.v4.widget.DrawerLayout>
