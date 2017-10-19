@@ -112,6 +112,5 @@ public class XAxisSetter implements IXAxisSetter {
     @Override
     public void cancelFormatter() {
         mXAxis.setValueFormatter(null);
-        setLabelCount(6);
     }
 }

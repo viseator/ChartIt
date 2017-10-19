@@ -77,8 +77,9 @@ public class BarChartFragment extends ChartViewFragment {
         barDataSet.setColor(getResources().getColor(R.color.colorPrimary));
         BarData barData = new BarData(barDataSet);
         mBarChart.getLegend().setEnabled(false);
+        mXAxis.setLabelCount(entries.size());
         if (entries.get(0).getData() == null) {
-            mXAxis.setDrawLabels(false);
+//            mXAxis.setDrawLabels(false);
         } else {
             List<String> formatterString = new ArrayList<>(entries.size());
             for (Entry e : entries) {

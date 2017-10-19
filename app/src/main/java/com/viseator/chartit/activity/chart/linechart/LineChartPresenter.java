@@ -69,6 +69,7 @@ public class LineChartPresenter implements LineChartContract.Presenter {
         setDataStyle(0, lineDataSet);
         mLineData = new LineData(lineDataSet);
         mView.setData(mLineData);
+        mView.setLabelCount(entries.size());
         if (entries.get(0).getData() == null) {
             mView.cancelFormatter();
         } else {

@@ -42,7 +42,7 @@ public class DataAddAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public static final int TYPE_BUTTON = 0x2;
     private int mItemIndex = 0;
     private int mLastIndex = -1;
-    private int mPos;
+    private int mPos = -1;
     private Context mContext;
     private EditText mLastXEditText;
     private EditText mLastYEditText;

@@ -87,6 +87,11 @@ public class LineChartView extends LineChart implements LineChartContract.View {
     }
 
     @Override
+    public void setLabelCount(int count) {
+        mXAxisSetter.setLabelCount(count - 1);
+    }
+
+    @Override
     public void setProperties(ChartStyleEntity chartStyle) {
         if (NullChecker.isSetted(chartStyle.getBackgroundColor())) {
             super.setBackgroundColor(Color.parseColor(chartStyle.getBackgroundColor()));

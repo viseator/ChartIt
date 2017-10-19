@@ -68,6 +68,7 @@ public class DataAddModifyFragment extends BaseFragment {
         } else {
             mDataAddAdapter = new DataAddAdapter(getActivity(), mPos);
             mButton.setText(getResources().getString(R.string.update_data));
+            mEditText.setText(mChartDataRepository.getLabel(mPos));
         }
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setAdapter(mDataAddAdapter);

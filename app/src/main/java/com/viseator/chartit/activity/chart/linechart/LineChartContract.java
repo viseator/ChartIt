@@ -42,6 +42,8 @@ public interface LineChartContract {
         void cancelFormatter();
 
         void setOnTouchListener();
+
+        void setLabelCount(int count);
     }
 
 }
