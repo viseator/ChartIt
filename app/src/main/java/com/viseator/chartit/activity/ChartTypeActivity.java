@@ -19,6 +19,7 @@ public class ChartTypeActivity extends BaseActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        setContentView(R.layout.activity_chart_type);
         super.onCreate(savedInstanceState);
     }
 
@@ -26,11 +27,6 @@ public class ChartTypeActivity extends BaseActivity {
     @OnItemClick(R.id.chart_list)
     void onListItemClick(int position) {
 
-    }
-
-    @Override
-    protected int getLayout() {
-        return R.layout.activity_chart_type;
     }
 
     @Override

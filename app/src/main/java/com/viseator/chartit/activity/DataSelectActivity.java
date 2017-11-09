@@ -51,13 +51,9 @@ public class DataSelectActivity extends BaseActivity {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        setContentView(R.layout.activity_data_select);
         super.onCreate(savedInstanceState);
         ChartStyle.getChartStyleEntity(getChartStyleDao());
-    }
-
-    @Override
-    protected int getLayout() {
-        return R.layout.activity_data_select;
     }
 
     @Override

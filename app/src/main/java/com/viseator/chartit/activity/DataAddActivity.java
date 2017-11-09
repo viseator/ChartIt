@@ -12,12 +12,8 @@ public class DataAddActivity extends BaseActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        setContentView(R.layout.activity_add_data);
         super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    protected int getLayout() {
-        return R.layout.activity_add_data;
     }
 
     @Override

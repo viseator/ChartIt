@@ -13,6 +13,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        setContentView(R.layout.activity_main);
         super.onCreate(savedInstanceState);
     }
 
@@ -22,10 +23,6 @@ public class MainActivity extends BaseActivity {
         startActivity(intent);
     }
 
-    @Override
-    protected int getLayout() {
-        return R.layout.activity_main;
-    }
 
     @Override
     protected void initView() {

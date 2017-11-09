@@ -19,7 +19,6 @@ public abstract class ChartActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setFullScreen();
     }
 
     @Override
