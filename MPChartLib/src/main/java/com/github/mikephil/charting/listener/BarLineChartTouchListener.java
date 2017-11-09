@@ -24,11 +24,15 @@ import com.github.mikephil.charting.utils.ViewPortHandler;
  * TouchListener for Bar-, Line-, Scatter- and CandleStickChart with handles all
  * touch interaction. Longpress == Zoom out. Double-Tap == Zoom in.
  *
+ *
  * @author Philipp Jahoda
  */
+
+/* Modifications copyright (C) 2017 <viseator> */
 public class BarLineChartTouchListener extends ChartTouchListener<BarLineChartBase<? extends
         BarLineScatterCandleBubbleData<?
         extends IBarLineScatterCandleBubbleDataSet<? extends Entry>>>> {
+
 
     /**
      * the original touch-matrix from the chart

@@ -10,6 +10,8 @@ import com.github.mikephil.charting.highlight.Highlight;
 /**
  * Created by philipp on 12/06/15.
  */
+
+/* Modifications copyright (C) 2017 <viseator> */
 public abstract class ChartTouchListener<T extends Chart<?>> extends GestureDetector.SimpleOnGestureListener implements View.OnTouchListener {
 
     public enum ChartGesture {
