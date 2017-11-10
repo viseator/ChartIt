@@ -1,4 +1,4 @@
-[![Build Status](https://www.bitrise.io/app/86162a38a0666790/status.svg?token=0dGcQ5g0s-298n6xKZBjHA&branch=master)](https://www.bitrise.io/app/86162a38a0666790)
+[![Build Status](https://www.bitrise.io/app/792c646196cc6445/status.svg?token=16VcJ7baDc2sqAfcghdb5A&branch=master)](https://www.bitrise.io/app/792c646196cc6445)
 
 # ChartIt
 
