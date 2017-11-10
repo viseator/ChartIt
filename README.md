@@ -2,7 +2,7 @@
 
 # ChartIt
 
-Provied a convenient way to input data then generate various charts on the phone.
+Provide a convenient way to input data then generate various charts on the phone.
 
 ## Features
 
