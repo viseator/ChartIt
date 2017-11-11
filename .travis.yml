@@ -38,6 +38,7 @@ before_install:
   - chmod +x gradlew
   - ./gradlew androidDependencies
 script:
+  - ./gradlew greendao
   - ./gradlew assembleDebug
 addons:
   artifacts:
