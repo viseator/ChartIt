@@ -1,5 +1,6 @@
-[![Build Status](https://www.bitrise.io/app/792c646196cc6445/status.svg?token=16VcJ7baDc2sqAfcghdb5A&branch=master)](https://www.bitrise.io/app/792c646196cc6445) [![CircleCI](https://circleci.com/gh/viseator/ChartIt.svg?style=svg)](https://circleci.com/gh/viseator/ChartIt)
 # ChartIt
+
+[![Build Status](https://www.bitrise.io/app/792c646196cc6445/status.svg?token=16VcJ7baDc2sqAfcghdb5A&branch=master)](https://www.bitrise.io/app/792c646196cc6445) [![CircleCI](https://circleci.com/gh/viseator/ChartIt.svg?style=svg)](https://circleci.com/gh/viseator/ChartIt)
 
 Provide a convenient way to input data then generate various charts on the phone.
 
