@@ -3,9 +3,9 @@ package com.viseator.chartit;
 import android.support.v4.app.Fragment;
 
 import com.viseator.chartit.data.chart.ChartDataEntityDao;
+import com.viseator.chartit.data.chart.DaoSession;
 import com.viseator.chartit.data.style.ChartSetStyleEntityDao;
 import com.viseator.chartit.data.style.ChartStyleEntityDao;
-import com.viseator.chartit.data.style.DaoSession;
 
 /**
  * Created by viseator on 10/14/17.

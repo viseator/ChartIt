@@ -20,9 +20,9 @@ import com.viseator.chartit.activity.chart.linechart.LineChartActivity;
 import com.viseator.chartit.adapter.SelectAdapter;
 import com.viseator.chartit.data.chart.ChartDataEntityDao;
 import com.viseator.chartit.data.chart.ChartDataRepository;
+import com.viseator.chartit.data.chart.DaoSession;
 import com.viseator.chartit.data.chart.local.LocalChartData;
 import com.viseator.chartit.data.style.ChartStyle;
-import com.viseator.chartit.data.style.DaoSession;
 
 import butterknife.BindView;
 

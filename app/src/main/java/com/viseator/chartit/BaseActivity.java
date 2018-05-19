@@ -10,10 +10,10 @@ import android.view.WindowManager;
 
 import com.viseator.chartit.data.chart.ChartDataEntityDao;
 import com.viseator.chartit.data.chart.ChartDataRepository;
+import com.viseator.chartit.data.chart.DaoSession;
 import com.viseator.chartit.data.chart.local.LocalChartData;
 import com.viseator.chartit.data.style.ChartSetStyleEntityDao;
 import com.viseator.chartit.data.style.ChartStyleEntityDao;
-import com.viseator.chartit.data.style.DaoSession;
 
 import butterknife.ButterKnife;
 
