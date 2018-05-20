@@ -64,7 +64,6 @@ public class BarChartFragment extends ChartViewFragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        mBarChart.getDescription().setEnabled(false);
         List<BarEntry> entries = DataCoverter.toBarEntries((List<Entry>) mChartDataRepository
                 .getData(mPos));
         mBarChart.getAxisRight().setEnabled(false);
@@ -88,5 +87,6 @@ public class BarChartFragment extends ChartViewFragment {
             mXAxis.setValueFormatter(new XAxisFormatter(formatterString));
         }
         mBarChart.setData(barData);
+        ((UiCallback) mBarChart).setTouchListener();
     }
 }
