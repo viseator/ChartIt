@@ -47,20 +47,23 @@ public class BarChartTouchListener extends BarLineChartTouchListener {
             Matrix touchMatrix, float dragTriggerDistance) {
         super(chart, touchMatrix, dragTriggerDistance);
         mViewPortHandler = mChart.getViewPortHandler();
-        mChartYValueRange = calYValueRange();
+        calYValueRange();
         Log.d(TAG, "YRange:" + mChartYValueRange);
     }
 
-    private float calYValueRange() {
+    private void calYValueRange() {
         DataSet<Entry> dataSet = (DataSet<Entry>) mChart.getData().getDataSetByIndex(0);
         float max = 0f;
+        float min = Float.MAX_VALUE;
         List<Entry> entryList =dataSet.getValues();
         for (Entry e : entryList) {
             if (e.getY() > max) {
                 max = e.getY();
+            } else if (e.getY() < min) {
+                min = e.getY();
             }
         }
-        return max;
+        mChartYValueRange = max - min;
     }
     @Override
     public boolean onTouch(View v, MotionEvent event) {
